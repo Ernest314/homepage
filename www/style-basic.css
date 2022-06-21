@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+:root {
+	--c-gray-d2: #252525;
+	--c-gray-d1: #474747;
+	--c-gray-n : #676767;
+	--c-gray-l1: #989898;
+	--c-gray-l2: #c9c9c9;
+
+	--c-green-d2: #0e3c19;
+	--c-green-d1: #1b722f;
+	--c-green-n : #28a745;
+	--c-green-l1: #6dc381;
+	--c-green-l2: #b2dfbc;
+	
+	--c-blue-d2: #083a42;
+	--c-blue-d1: #106e7d;
+	--c-blue-n : #17a2b8;
+	--c-blue-l1: #86cfda;
+	--c-blue-l2: #abdee5;
+
+	--f-fira: 'Fira Code', monospace;
+	--f-merriweather-sans: 'Merriweather Sans', sans-serif;
+	--f-merriweather: 'Merriweather', serif;
+}
+
+html {
+	color: var(--c-gray-d2);
+	background-color: var(--c-gray-l2);
+	font-family: var(--f-merriweather-sans)
+}
