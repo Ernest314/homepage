@@ -178,3 +178,7 @@ footer {
 .hidden {
 	display: none;
 }
+
+/* .footer-box.hidden { opacity: 0; }
+.footer-box:not(.hidden) { opacity: 1; }
+.footer-box { transition: opacity 0.5s; } */
