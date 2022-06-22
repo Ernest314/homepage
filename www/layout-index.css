@@ -138,6 +138,22 @@ svg #icon-erythro-letter {
 	width: 100%;
 	height: 100%;
 }
+/* hover effects */
+.connection:hover > svg .fill-gray {
+	fill: var(--c-gray-d2);
+	transition: fill 0.2s;
+}
+.connection > svg .fill-gray {
+	transition: fill 0.2s;
+}
+.connection:hover > svg {
+	transform: scale(140%);
+	transition: transform 0.2s;
+}
+.connection > svg {
+	transform: scale(100%);
+	transition: transform 0.2s;
+}
 
 
 footer {
