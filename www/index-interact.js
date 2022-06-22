@@ -3,61 +3,15 @@ function toggle_signature() {
 	let signature_zh = document.getElementById("signature-zh");
 	signature_en.classList.toggle("hidden");
 	signature_zh.classList.toggle("hidden");
-	
-	function get_animation(id) {
-		let element = document.getElementById(id);
-		let list = element.getAnimations();
-		if (list.length > 0) {
-			return list[0];
-		}
-		return null;
+	if (!signature_en.classList.contains("hidden")) {
+		animate_signature_en(false);
 	}
-
-	function set_animation_time(id, msec) {
-		console.info(id);
-		console.info(msec);
-		let animation = get_animation(id);
-		if (animation == null) {
-			return;
-		}
-		animation.currentTime = msec;
-		animation.pause();
+	if (!signature_zh.classList.contains("hidden")) {
+		animate_signature_zh(false);
 	}
-
-	// let animations = [].concat(
-	// 	get_animation("signature-e"),
-	// 	get_animation("signature-g"),
-	// 	get_animation("signature-dot"),
-	// 	get_animation("signature-x-1"),
-	// 	get_animation("signature-x-2"),
-	// 	get_animation("signature-x-3"),
-	// 	get_animation("signature-x-4"),
-	// 	get_animation("signature-z-1"),
-	// 	get_animation("signature-z-2"),
-	// 	get_animation("signature-z-3"),
-	// 	get_animation("signature-z-4")
-	// );
-
-	// animations.forEach((animation, index) => {
-	// 	console.info(animation);
-	// 	console.info(index);
-	// 	animation.pause();
-	// });
-
-	// set_animation_time("signature-e",   700);
-	// set_animation_time("signature-g",   140);
-	// set_animation_time("signature-dot", 140);
-	// set_animation_time("signature-x-1", 180);
-	// set_animation_time("signature-x-2", 180);
-	// set_animation_time("signature-x-3", 180);
-	// set_animation_time("signature-x-4", 180);
-	// set_animation_time("signature-z-1", 180);
-	// set_animation_time("signature-z-2", 180);
-	// set_animation_time("signature-z-3", 180);
-	// set_animation_time("signature-z-4", 180);
 }
 
-window.addEventListener("load", function() {
+document.addEventListener("DOMContentLoaded", () => {
 	document.querySelector("#signature-en")
 		.addEventListener("click", toggle_signature);
 	document.querySelector("#signature-zh")
