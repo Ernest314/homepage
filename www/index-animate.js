@@ -5,6 +5,11 @@ function animate_signature_en() {
 		".": document.getElementById("signature-dot"),
 	};
 	var length = {};
+	
+	var animations = path["."].getAnimations();
+	if (animations.length > 0 && animations[0].playState == "running") {
+		return;
+	}
 
 	function init_data(key) {
 		length[key] = path[key].getTotalLength();
@@ -65,6 +70,11 @@ function animate_signature_zh() {
 		"z4": document.getElementById("signature-z-4"),
 	};
 	var length = {};
+	
+	var animations = path["z4"].getAnimations();
+	if (animations.length > 0 && animations[0].playState == "running") {
+		return;
+	}
 
 	function init_data(key) {
 		length[key] = path[key].getTotalLength();
