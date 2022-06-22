@@ -148,11 +148,16 @@ footer {
 
 	width: calc(4 * var(--s-block));
 	margin: auto;
-	margin-top: 1.8em;
+	margin-top: 0.8em;
 }
 .footer-box {
 	display: block;
+	padding: 1em;
 }
 .footer-box > svg {
 	height: 4em;
+}
+
+.hidden {
+	display: none;
 }
