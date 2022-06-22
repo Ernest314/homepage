@@ -20,37 +20,23 @@ function animate_signature_en() {
 	init_data(".");
 
 	var duration = 1400; // msec
+	function s(id) { return length[id]; }
 	var keyframes = {
-		"e": [
-			{ offset:    0, opacity: 1 },
-			{ offset: 0.08, opacity: 0 },
-			{ offset: 0.08, strokeDashoffset: 0 },
-			{ offset: 0.09, opacity: 0 },
-			{ offset: 0.09, strokeDashoffset: length["e"] },
-			{ offset: 0.10, opacity: 1 },
-			{ offset: 0.20, strokeDashoffset: length["e"] },
-			{ offset: 0.45, strokeDashoffset: 0 },
-		],
-		"g": [
-			{ offset:    0, opacity: 1 },
-			{ offset: 0.08, opacity: 0 },
-			{ offset: 0.08, strokeDashoffset: 0 },
-			{ offset: 0.09, opacity: 0 },
-			{ offset: 0.09, strokeDashoffset: length["g"] },
-			{ offset: 0.10, opacity: 1 },
-			{ offset: 0.35, strokeDashoffset: length["g"] },
-			{ offset: 0.80, strokeDashoffset: 0 },
-		],
-		".": [
-			{ offset:    0, opacity: 1 },
-			{ offset: 0.08, opacity: 0 },
-			{ offset: 0.08, strokeDashoffset: 0 },
-			{ offset: 0.09, opacity: 0 },
-			{ offset: 0.09, strokeDashoffset: length["."] },
-			{ offset: 0.10, opacity: 1 },
-			{ offset: 0.90, strokeDashoffset: length["."] },
-			{ offset: 1.00, strokeDashoffset: 0 },
-		],
+		"e": {
+			offset          : [ 0.0000, 0.0800, 0.0900, 0.1000, 0.2000, 0.4500 ],
+			opacity         : [      1,      0,      0,      1,      1,      1 ],
+			strokeDashoffset: [      0,      0, s("e"), s("e"), s("e"),      0 ],
+		},
+		"g": {
+			offset          : [ 0.0000, 0.0800, 0.0900, 0.1000, 0.3500, 0.8000 ],
+			opacity         : [      1,      0,      0,      1,      1,      1 ],
+			strokeDashoffset: [      0,      0, s("g"), s("g"), s("g"),      0 ],
+		},
+		".": {
+			offset          : [ 0.0000, 0.0800, 0.0900, 0.1000, 0.9000, 1.0000 ],
+			opacity         : [      1,      0,      0,      1,      1,      1 ],
+			strokeDashoffset: [      0,      0, s("."), s("."), s("."),      0 ],
+		},
 	};
 
 	path["e"].animate(keyframes["e"], duration);
@@ -90,87 +76,48 @@ function animate_signature_zh() {
 	init_data("z4");
 
 	var duration = 3000; // msec
+	function s(id) { return length[id]; }
 	var keyframes = {
-		"x1": [
-			{ offset:    0, opacity: 1 },
-			{ offset: 0.04, opacity: 0 },
-			{ offset: 0.04, strokeDashoffset: 0 },
-			{ offset: 0.05, opacity: 0 },
-			{ offset: 0.05, strokeDashoffset: length["x1"] },
-			{ offset: 0.06, opacity: 1 },
-			{ offset: 0.10, strokeDashoffset: length["x1"] },
-			{ offset: 0.21, strokeDashoffset: 0 },
-		],
-		"x2": [
-			{ offset:    0, opacity: 1 },
-			{ offset: 0.04, opacity: 0 },
-			{ offset: 0.04, strokeDashoffset: 0 },
-			{ offset: 0.05, opacity: 0 },
-			{ offset: 0.05, strokeDashoffset: length["x2"] },
-			{ offset: 0.06, opacity: 1 },
-			{ offset: 0.26, strokeDashoffset: length["x2"] },
-			{ offset: 0.31, strokeDashoffset: 0 },
-		],
-		"x3": [
-			{ offset:    0, opacity: 1 },
-			{ offset: 0.04, opacity: 0 },
-			{ offset: 0.04, strokeDashoffset: 0 },
-			{ offset: 0.05, opacity: 0 },
-			{ offset: 0.05, strokeDashoffset: length["x3"] },
-			{ offset: 0.06, opacity: 1 },
-			{ offset: 0.38, strokeDashoffset: length["x3"] },
-			{ offset: 0.45, strokeDashoffset: 0 },
-		],
-		"x4": [
-			{ offset:    0, opacity: 1 },
-			{ offset: 0.04, opacity: 0 },
-			{ offset: 0.04, strokeDashoffset: 0 },
-			{ offset: 0.05, opacity: 0 },
-			{ offset: 0.05, strokeDashoffset: length["x4"] },
-			{ offset: 0.06, opacity: 1 },
-			{ offset: 0.50, strokeDashoffset: length["x4"] },
-			{ offset: 0.58, strokeDashoffset: 0 },
-		],
-		"z1": [
-			{ offset:    0, opacity: 1 },
-			{ offset: 0.04, opacity: 0 },
-			{ offset: 0.04, strokeDashoffset: 0 },
-			{ offset: 0.05, opacity: 0 },
-			{ offset: 0.05, strokeDashoffset: length["z1"] },
-			{ offset: 0.06, opacity: 1 },
-			{ offset: 0.48, strokeDashoffset: length["z1"] },
-			{ offset: 0.57, strokeDashoffset: 0 },
-		],
-		"z2": [
-			{ offset:    0, opacity: 1 },
-			{ offset: 0.04, opacity: 0 },
-			{ offset: 0.04, strokeDashoffset: 0 },
-			{ offset: 0.05, opacity: 0 },
-			{ offset: 0.05, strokeDashoffset: length["z2"] },
-			{ offset: 0.06, opacity: 1 },
-			{ offset: 0.62, strokeDashoffset: length["z2"] },
-			{ offset: 0.69, strokeDashoffset: 0 },
-		],
-		"z3": [
-			{ offset:    0, opacity: 1 },
-			{ offset: 0.04, opacity: 0 },
-			{ offset: 0.04, strokeDashoffset: 0 },
-			{ offset: 0.05, opacity: 0 },
-			{ offset: 0.05, strokeDashoffset: length["z3"] },
-			{ offset: 0.06, opacity: 1 },
-			{ offset: 0.76, strokeDashoffset: length["z3"] },
-			{ offset: 0.87, strokeDashoffset: 0 },
-		],
-		"z4": [
-			{ offset:    0, opacity: 1 },
-			{ offset: 0.04, opacity: 0 },
-			{ offset: 0.04, strokeDashoffset: 0 },
-			{ offset: 0.05, opacity: 0 },
-			{ offset: 0.05, strokeDashoffset: length["z4"] },
-			{ offset: 0.06, opacity: 1 },
-			{ offset: 0.92, strokeDashoffset: length["z4"] },
-			{ offset: 1.00, strokeDashoffset: 0 },
-		],
+		"x1": {
+			offset          : [  0.0000,  0.0400,  0.0500,  0.0600,  0.1000,  0.2100 ],
+			opacity         : [       1,       0,       0,       1,       1,       1 ],
+			strokeDashoffset: [       0,       0, s("x1"), s("x1"), s("x1"),       0 ],
+		},
+		"x2": {
+			offset          : [  0.0000,  0.0400,  0.0500,  0.0600,  0.2600,  0.3100 ],
+			opacity         : [       1,       0,       0,       1,       1,       1 ],
+			strokeDashoffset: [       0,       0, s("x2"), s("x2"), s("x2"),       0 ],
+		},
+		"x3": {
+			offset          : [  0.0000,  0.0400,  0.0500,  0.0600,  0.3800,  0.4500 ],
+			opacity         : [       1,       0,       0,       1,       1,       1 ],
+			strokeDashoffset: [       0,       0, s("x3"), s("x3"), s("x3"),       0 ],
+		},
+		"x4": {
+			offset          : [  0.0000,  0.0400,  0.0500,  0.0600,  0.5000,  0.5800 ],
+			opacity         : [       1,       0,       0,       1,       1,       1 ],
+			strokeDashoffset: [       0,       0, s("x4"), s("x4"), s("x4"),       0 ],
+		},
+		"z1": {
+			offset          : [  0.0000,  0.0400,  0.0500,  0.0600,  0.4800,  0.5700 ],
+			opacity         : [       1,       0,       0,       1,       1,       1 ],
+			strokeDashoffset: [       0,       0, s("z1"), s("z1"), s("z1"),       0 ],
+		},
+		"z2": {
+			offset          : [  0.0000,  0.0400,  0.0500,  0.0600,  0.6200,  0.6900 ],
+			opacity         : [       1,       0,       0,       1,       1,       1 ],
+			strokeDashoffset: [       0,       0, s("z2"), s("z2"), s("z2"),       0 ],
+		},
+		"z3": {
+			offset          : [  0.0000,  0.0400,  0.0500,  0.0600,  0.7600,  0.8700 ],
+			opacity         : [       1,       0,       0,       1,       1,       1 ],
+			strokeDashoffset: [       0,       0, s("z3"), s("z3"), s("z3"),       0 ],
+		},
+		"z4": {
+			offset          : [  0.0000,  0.0400,  0.0500,  0.0600,  0.9200,  1.0000 ],
+			opacity         : [       1,       0,       0,       1,       1,       1 ],
+			strokeDashoffset: [       0,       0, s("z4"), s("z4"), s("z4"),       0 ],
+		},
 	};
 
 	path["x1"].animate(keyframes["x1"], duration);
