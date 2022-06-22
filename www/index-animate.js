@@ -79,7 +79,7 @@ function animate_signature_zh() {
 	init_data("z3");
 	init_data("z4");
 
-	var duration = 3200; // msec
+	var duration = 3000; // msec
 	var keyframes = {
 		"x1": [
 			{ offset:    0, opacity: 1 },
