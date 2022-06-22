@@ -4,7 +4,7 @@
 }
 
 body {
-	margin: 2em auto;
+	margin: 4em auto;
 	width: 48em;
 }
 
@@ -123,7 +123,7 @@ svg #icon-erythro-letter {
 	justify-content: center;
 	align-items: center;
 	align-content: center;
-	gap: 2.4em;
+	gap: 1.4em;
 
 	width: 30em;
 	margin: auto;
@@ -132,6 +132,7 @@ svg #icon-erythro-letter {
 .connection {
 	width: 2.4em;
 	height: 2.4em;
+	padding: 0.6em;
 }
 .connection > svg {
 	width: 100%;
@@ -152,11 +153,11 @@ footer {
 }
 .footer-box {
 	display: block;
-	padding: 1em;
 }
-.footer-box > svg {
-	height: 4em;
-}
+#signature-en { padding: 1.8em 1.2em 0.0em 0; }
+#signature-zh { padding: 0.0em 0.0em 0.4em 0; }
+#signature-en > svg { height: 4em; }
+#signature-zh > svg { height: 6em; }
 
 .hidden {
 	display: none;
