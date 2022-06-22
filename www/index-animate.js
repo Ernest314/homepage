@@ -1,12 +1,12 @@
 function animate_signature_en() {
-	var path = {
+	let path = {
 		"e": document.getElementById("signature-e"),
 		"g": document.getElementById("signature-g"),
 		".": document.getElementById("signature-dot"),
 	};
-	var length = {};
+	let length = {};
 	
-	var animations = path["."].getAnimations();
+	let animations = path["."].getAnimations();
 	if (animations.length > 0 && animations[0].playState == "running") {
 		return;
 	}
@@ -19,21 +19,21 @@ function animate_signature_en() {
 	init_data("g");
 	init_data(".");
 
-	var duration = 1400; // msec
+	const duration = 1200; // msec
 	function s(id) { return length[id]; }
-	var keyframes = {
+	let keyframes = {
 		"e": {
-			offset          : [ 0.0000, 0.0800, 0.0900, 0.1000, 0.2000, 0.4500 ],
+			offset          : [ 0.0000, 0.1000, 0.1500, 0.2000, 0.2500, 0.5500 ],
 			opacity         : [      1,      0,      0,      1,      1,      1 ],
 			strokeDashoffset: [      0,      0, s("e"), s("e"), s("e"),      0 ],
 		},
 		"g": {
-			offset          : [ 0.0000, 0.0800, 0.0900, 0.1000, 0.3500, 0.8000 ],
+			offset          : [ 0.0000, 0.1000, 0.1500, 0.2000, 0.4000, 0.8000 ],
 			opacity         : [      1,      0,      0,      1,      1,      1 ],
 			strokeDashoffset: [      0,      0, s("g"), s("g"), s("g"),      0 ],
 		},
 		".": {
-			offset          : [ 0.0000, 0.0800, 0.0900, 0.1000, 0.9000, 1.0000 ],
+			offset          : [ 0.0000, 0.1000, 0.1500, 0.2000, 0.9000, 1.0000 ],
 			opacity         : [      1,      0,      0,      1,      1,      1 ],
 			strokeDashoffset: [      0,      0, s("."), s("."), s("."),      0 ],
 		},
@@ -45,7 +45,7 @@ function animate_signature_en() {
 }
 
 function animate_signature_zh() {
-	var path = {
+	let path = {
 		"x1": document.getElementById("signature-x-1"),
 		"x2": document.getElementById("signature-x-2"),
 		"x3": document.getElementById("signature-x-3"),
@@ -55,9 +55,9 @@ function animate_signature_zh() {
 		"z3": document.getElementById("signature-z-3"),
 		"z4": document.getElementById("signature-z-4"),
 	};
-	var length = {};
+	let length = {};
 	
-	var animations = path["z4"].getAnimations();
+	let animations = path["z4"].getAnimations();
 	if (animations.length > 0 && animations[0].playState == "running") {
 		return;
 	}
@@ -75,46 +75,46 @@ function animate_signature_zh() {
 	init_data("z3");
 	init_data("z4");
 
-	var duration = 3000; // msec
+	const duration = 1800; // msec
 	function s(id) { return length[id]; }
-	var keyframes = {
+	let keyframes = {
 		"x1": {
-			offset          : [  0.0000,  0.0400,  0.0500,  0.0600,  0.1000,  0.2100 ],
+			offset          : [  0.0000,  0.0677,  0.0700,  0.1333,  0.1600,  0.3400 ],
 			opacity         : [       1,       0,       0,       1,       1,       1 ],
 			strokeDashoffset: [       0,       0, s("x1"), s("x1"), s("x1"),       0 ],
 		},
 		"x2": {
-			offset          : [  0.0000,  0.0400,  0.0500,  0.0600,  0.2600,  0.3100 ],
+			offset          : [  0.0000,  0.0677,  0.0700,  0.1333,  0.3600,  0.4600 ],
 			opacity         : [       1,       0,       0,       1,       1,       1 ],
 			strokeDashoffset: [       0,       0, s("x2"), s("x2"), s("x2"),       0 ],
 		},
 		"x3": {
-			offset          : [  0.0000,  0.0400,  0.0500,  0.0600,  0.3800,  0.4500 ],
+			offset          : [  0.0000,  0.0677,  0.0700,  0.1333,  0.4800,  0.6200 ],
 			opacity         : [       1,       0,       0,       1,       1,       1 ],
 			strokeDashoffset: [       0,       0, s("x3"), s("x3"), s("x3"),       0 ],
 		},
 		"x4": {
-			offset          : [  0.0000,  0.0400,  0.0500,  0.0600,  0.5000,  0.5800 ],
+			offset          : [  0.0000,  0.0677,  0.0700,  0.1333,  0.6400,  0.7600 ],
 			opacity         : [       1,       0,       0,       1,       1,       1 ],
 			strokeDashoffset: [       0,       0, s("x4"), s("x4"), s("x4"),       0 ],
 		},
 		"z1": {
-			offset          : [  0.0000,  0.0400,  0.0500,  0.0600,  0.4800,  0.5700 ],
+			offset          : [  0.0000,  0.0677,  0.0700,  0.1333,  0.4400,  0.5600 ],
 			opacity         : [       1,       0,       0,       1,       1,       1 ],
 			strokeDashoffset: [       0,       0, s("z1"), s("z1"), s("z1"),       0 ],
 		},
 		"z2": {
-			offset          : [  0.0000,  0.0400,  0.0500,  0.0600,  0.6200,  0.6900 ],
+			offset          : [  0.0000,  0.0677,  0.0700,  0.1333,  0.6200,  0.7000 ],
 			opacity         : [       1,       0,       0,       1,       1,       1 ],
 			strokeDashoffset: [       0,       0, s("z2"), s("z2"), s("z2"),       0 ],
 		},
 		"z3": {
-			offset          : [  0.0000,  0.0400,  0.0500,  0.0600,  0.7600,  0.8700 ],
+			offset          : [  0.0000,  0.0677,  0.0700,  0.1333,  0.7200,  0.9000 ],
 			opacity         : [       1,       0,       0,       1,       1,       1 ],
 			strokeDashoffset: [       0,       0, s("z3"), s("z3"), s("z3"),       0 ],
 		},
 		"z4": {
-			offset          : [  0.0000,  0.0400,  0.0500,  0.0600,  0.9200,  1.0000 ],
+			offset          : [  0.0000,  0.0677,  0.0700,  0.1333,  0.9200,  1.0000 ],
 			opacity         : [       1,       0,       0,       1,       1,       1 ],
 			strokeDashoffset: [       0,       0, s("z4"), s("z4"), s("z4"),       0 ],
 		},
