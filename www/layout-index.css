@@ -94,7 +94,6 @@ svg #icon-admin-prompt,
 svg #icon-unknown-dot {
 	fill: var(--c-green-d1);
 }
-svg #icon-journal-stroke,
 svg #icon-software-branch {
 	stroke: var(--c-green-d1);
 }
