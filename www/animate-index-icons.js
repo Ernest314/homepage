@@ -47,6 +47,7 @@ function animate_icon_journal() {
 	path_ink.style.strokeDasharray = s_path;
 	path_ink.style.strokeDashoffset = -s_path;
 	svg.appendChild(path_ink);
+	// NB: Remember to remove this node later!
 
 	// Clone wiggle animation.
 	path_ink.animate({
@@ -66,7 +67,7 @@ function animate_icon_journal() {
 	}, duration);
 
 	// Repeat after a delay.
-	let delay_units = random_int(2, 9);
+	let delay_units = random_int(2, 7);
 	animation.addEventListener("finish", () => {
 		svg.removeChild(path_ink);
 		setTimeout(animate_icon_journal, delay_units * duration_unit);
@@ -127,6 +128,7 @@ function animate_icon(id) {
 document.addEventListener("DOMContentLoaded", () => {
 	let circles = document.querySelectorAll(".circle > svg");
 	circles.forEach((svg) => {
-		animate_icon(svg.id);
+		let duration = random_int(1, 5) * 2000;
+		setTimeout(() => { animate_icon(svg.id); }, duration);
 	});
 });
