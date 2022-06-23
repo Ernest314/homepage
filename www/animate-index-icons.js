@@ -191,26 +191,25 @@ function animate_icon_software() {
 	let path_node_b = path_node_main_b.cloneNode();
 	path_node_a.id = "icon-software-travel-node";
 	path_node_b.id = "icon-software-travel-center";
-	// svg.appendChild(path_node_a);
-	// svg.appendChild(path_node_b);
-	// NB: Remember to remove this node later!
+	svg.appendChild(path_node_a);
+	svg.appendChild(path_node_b);
+	// NB: Remember to remove these nodes later!
 
 	// Node travelling animation.
-	// let y_a = path_node_main_a.cy;
-	// let y_b = path_node_base.cy;
-	// path_node_a.animate({
-	// 	cy: [ y_a, y_b ]
-	// },{
-	// 	duration: duration_unit,
-	// 	iterations: iterations,
-	// });
-	let path_node = document.createElementNS("http://www.w3.org/2000/svg", "g");
-	path_node.appendChild(path_node_a);
-	path_node.appendChild(path_node_b);
-	svg.appendChild(path_node);
-	// NB: Remember to remove this node later!
-	path_node.animate({
-		transform: ["translate(0%, 0%)", "translate(0%, 78%)"],
+	function SVGLength_to_percent(svglength) {
+		svglength.convertToSpecifiedUnits(SVGLength.SVG_LENGTHTYPE_PERCENTAGE);
+		return svglength.valueAsString;
+	}
+	let y_a = SVGLength_to_percent(path_node_main_a.cy.baseVal);
+	let y_b = SVGLength_to_percent(path_node_base.cy.baseVal);
+	path_node_a.animate({
+		cy: [ y_a, y_b ]
+	},{
+		duration: duration_unit,
+		iterations: iterations,
+	});
+	path_node_b.animate({
+		cy: [ y_a, y_b ]
 	},{
 		duration: duration_unit,
 		iterations: iterations,
@@ -247,10 +246,8 @@ function animate_icon_software() {
 	// Repeat after a delay.
 	let delay_units = random_int(2, 9);
 	animation.addEventListener("finish", () => {
-		// svg.removeChild(path_node_a);
-		// svg.removeChild(path_node_b);
-		svg.removeChild(path_node);
-		svg.removeChild(path_accent);
+		svg.removeChild(path_node_a);
+		svg.removeChild(path_node_b);
 		setTimeout(animate_icon_software, delay_units * duration_unit);
 	});
 }
