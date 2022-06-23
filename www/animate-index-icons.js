@@ -19,8 +19,12 @@ function animate_icon_journal() {
 	// Rotate pen.
 	svg.style.overflow = "visible";
 	path_nib.style.transformOrigin = "88% 96%";
+	const rotate_m = "rotate(0deg)";
+	const rotate_a = "rotate(5deg)";
+	const rotate_b = "rotate(-5deg)";
 	path_nib.animate({
-		rotate: [ "0deg", "5deg", "0deg", "-5deg", "0deg" ],
+		// rotate: [ "0deg", "5deg", "0deg", "-5deg", "0deg" ],
+		transform: [ rotate_m, rotate_a, rotate_m, rotate_b, rotate_m ],
 	}, {
 		duration: duration_unit,
 		iterations: iterations,
@@ -86,10 +90,13 @@ function animate_icon_music() {
 	// Squash clef.
 	svg.style.overflow = "visible";
 	path_clef.style.transformOrigin = "85% 34%";
+	const scale_a = "scale(1, 1)";
+	const scale_b = "scale(0.95, 0.85)";
 	path_clef.animate({
 		easing: "ease-out",
 		offset: [ 0.125, 0.5, 0.875 ],
-		scale: [ "1 1", "0.95 0.85", "1 1" ],
+		// scale: [ "1 1", "0.95 0.85", "1 1" ],
+		transform: [ scale_a, scale_b, scale_a ],
 	},{
 		duration: duration_unit / 2,
 		iterations: iterations * 2,

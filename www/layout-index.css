@@ -63,8 +63,8 @@ main {
 .circle-box:nth-child(3n-1) .circle::before { animation-duration: 28s; }
 .circle-box:nth-child(3n-0) .circle::before { animation-duration: 34s; }
 
-@keyframes rotate-circle-1 { from {transform: rotate( 30deg)} to {transform: rotate(390deg)} }
-@keyframes rotate-circle-2 { from {transform: rotate(120deg)} to {transform: rotate(480deg)} }
+@keyframes rotate-circle-1 { from { transform: rotate( 30deg); } to { transform: rotate(390deg); } }
+@keyframes rotate-circle-2 { from { transform: rotate(120deg); } to { transform: rotate(480deg); } }
 
 .circle > svg {
 	--size-img: 52%;
