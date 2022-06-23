@@ -85,8 +85,6 @@ svg .stroke-white  { stroke: var(--c-gray-l2); }
 svg .stroke-accent { stroke: var(--c-green-n); }
 
 svg #icon-music-dot-b,
-svg #icon-resume-stripe-1,
-svg #icon-resume-stripe-3,
 svg #icon-projects-light-2,
 svg #icon-downloads-arrow,
 svg #icon-sandbox-solution,
@@ -97,8 +95,6 @@ svg #icon-software-branch {
 	stroke: var(--c-green-d1);
 }
 svg #icon-music-dot-t,
-svg #icon-resume-stripe-2,
-svg #icon-resume-stripe-4,
 svg #icon-projects-light-1 {
 	fill: var(--c-green-d2);
 }

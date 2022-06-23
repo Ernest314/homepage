@@ -79,7 +79,44 @@ function animate_icon_music() {
 }
 
 function animate_icon_resume() {
+	let svg = document.getElementById("icon-resume");
+	let path_stripe_1 = document.getElementById("icon-resume-stripe-1");
+	let path_stripe_2 = document.getElementById("icon-resume-stripe-2");
+	let path_stripe_3 = document.getElementById("icon-resume-stripe-3");
+	let path_stripe_4 = document.getElementById("icon-resume-stripe-4");
 
+	const duration_unit = 2000;
+	let iterations = random_int(2, 4) * 2;
+	// Cycles of 2 allow the animation to look better.
+
+	// Common definitions.
+	let style = getComputedStyle(svg);
+	let color_green_1 = style.getPropertyValue("--c-green-d1");
+	let color_green_2 = style.getPropertyValue("--c-green-d2");
+	let color_black = style.getPropertyValue("--c-gray-d2");
+
+	// Common params.
+	let params = {
+		duration: duration_unit * 2,
+		iterations: iterations / 2,
+	}; // Each cycle is 2 iteration periods.
+	let strobe_offset = [ 0, 0.125, 0.375, 0.5, 0.625, 0.875, 1 ];
+	let strobe_color_1 = [ color_black, color_green_1, color_green_1, color_black, color_green_2, color_green_2, color_black ];
+	let strobe_color_2 = [ color_black, color_green_2, color_green_2, color_black, color_green_1, color_green_1, color_black ];
+	let strobe_1 = { offset: strobe_offset, fill: strobe_color_1 };
+	let strobe_2 = { offset: strobe_offset, fill: strobe_color_2 };
+
+	// Strobe stripes.
+	path_stripe_1.animate(strobe_1, params);
+	path_stripe_2.animate(strobe_2, params);
+	path_stripe_3.animate(strobe_1, params);
+	let animation = path_stripe_4.animate(strobe_2, params);
+
+	// Repeat after a delay.
+	let delay_units = random_int(2, 7);
+	animation.addEventListener("finish", () => {
+		setTimeout(animate_icon_resume, delay_units * duration_unit);
+	});
 }
 
 function animate_icon_software() {
