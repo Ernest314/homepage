@@ -174,7 +174,85 @@ function animate_icon_resume() {
 }
 
 function animate_icon_software() {
+	let svg = document.getElementById("icon-software");
+	let path_node_main_a = document.getElementById("icon-software-main-node");
+	let path_node_main_b = document.getElementById("icon-software-main-center");
+	let path_node_base = document.getElementById("icon-software-base-node");
+	let path_branch = document.getElementById("icon-software-branch");
+	let path_main = document.getElementById("icon-software-main");
 
+	const duration_unit = 2000;
+	let iterations = random_int(2, 5);
+	// If the lower bound is 1, the offsets for the branch draw
+	// animation will overlap in the middle.
+
+	// Clone nodes for animation.
+	let path_node_a = path_node_main_a.cloneNode();
+	let path_node_b = path_node_main_b.cloneNode();
+	path_node_a.id = "icon-software-travel-node";
+	path_node_b.id = "icon-software-travel-center";
+	// svg.appendChild(path_node_a);
+	// svg.appendChild(path_node_b);
+	// NB: Remember to remove this node later!
+
+	// Node travelling animation.
+	// let y_a = path_node_main_a.cy;
+	// let y_b = path_node_base.cy;
+	// path_node_a.animate({
+	// 	cy: [ y_a, y_b ]
+	// },{
+	// 	duration: duration_unit,
+	// 	iterations: iterations,
+	// });
+	let path_node = document.createElementNS("http://www.w3.org/2000/svg", "g");
+	path_node.appendChild(path_node_a);
+	path_node.appendChild(path_node_b);
+	svg.appendChild(path_node);
+	// NB: Remember to remove this node later!
+	path_node.animate({
+		transform: ["translate(0%, 0%)", "translate(0%, 78%)"],
+	},{
+		duration: duration_unit,
+		iterations: iterations,
+	});
+
+	// Clone stroke for animation.
+	let path_accent = path_branch.cloneNode();
+	path_accent.id = "icon-software-accent";
+	let s_path = path_accent.getTotalLength();
+	path_accent.classList.remove("stroke-black");
+	path_accent.style.stroke =
+		getComputedStyle(svg).getPropertyValue("--c-green-d1");
+	path_accent.style.strokeWidth = 3.4; // fully cover up stroke
+	path_accent.style.strokeDasharray = s_path;
+	path_accent.style.strokeDashoffset = -s_path;
+	svg.insertBefore(path_accent, path_main);
+	// NB: Remember to remove this node later!
+
+	// Draw along branch.
+	let duration = iterations * duration_unit;
+	let time_a = 1 / (2 * iterations);
+	path_accent.animate({
+		offset: [ 0, time_a, 1 ],
+		strokeDashoffset: [ -s_path, 0, 0 ],
+	}, duration);
+
+	// Fade out branch.
+	let time_b = ((4 * iterations) - 1) / (4 * iterations);
+	let animation = path_accent.animate({
+		offset: [ 0, time_b, 1 ],
+		opacity: [ 1, 1, 0 ],
+	}, duration);
+
+	// Repeat after a delay.
+	let delay_units = random_int(2, 9);
+	animation.addEventListener("finish", () => {
+		// svg.removeChild(path_node_a);
+		// svg.removeChild(path_node_b);
+		svg.removeChild(path_node);
+		svg.removeChild(path_accent);
+		setTimeout(animate_icon_software, delay_units * duration_unit);
+	});
 }
 
 function animate_icon_projects() {
