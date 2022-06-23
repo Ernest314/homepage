@@ -166,6 +166,13 @@ footer {
 #signature-zh { padding: 0.0em 0.0em 0.4em 0; }
 #signature-en > svg { height: 4em; }
 #signature-zh > svg { height: 6em; }
+.footer-box > svg {
+	stroke: var(--c-gray-n);
+	transition: stroke 0.28s;
+}
+.footer-box:hover > svg {
+	stroke: var(--c-gray-d2);
+}
 
 .hidden {
 	display: none;
