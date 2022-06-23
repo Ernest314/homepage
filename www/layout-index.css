@@ -84,7 +84,6 @@ svg .stroke-gray   { stroke: var(--c-gray-n ); }
 svg .stroke-white  { stroke: var(--c-gray-l2); }
 svg .stroke-accent { stroke: var(--c-green-n); }
 
-svg #icon-music-dot-b,
 svg #icon-projects-light-2,
 svg #icon-downloads-arrow,
 svg #icon-sandbox-solution,
@@ -94,7 +93,6 @@ svg #icon-unknown-dot {
 svg #icon-software-branch {
 	stroke: var(--c-green-d1);
 }
-svg #icon-music-dot-t,
 svg #icon-projects-light-1 {
 	fill: var(--c-green-d2);
 }
@@ -172,7 +170,3 @@ footer {
 .hidden {
 	display: none;
 }
-
-/* .footer-box.hidden { opacity: 0; }
-.footer-box:not(.hidden) { opacity: 1; }
-.footer-box { transition: opacity 0.5s; } */

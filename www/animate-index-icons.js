@@ -75,7 +75,55 @@ function animate_icon_journal() {
 }
 
 function animate_icon_music() {
+	let svg = document.getElementById("icon-music");
+	let path_clef = document.getElementById("icon-music-clef");
+	let path_dot_t = document.getElementById("icon-music-dot-t");
+	let path_dot_b = document.getElementById("icon-music-dot-b");
 
+	const duration_unit = 2000;
+	let iterations = random_int(2, 5);
+
+	// Squash clef.
+	svg.style.overflow = "visible";
+	path_clef.style.transformOrigin = "85% 34%";
+	path_clef.animate({
+		easing: "ease-out",
+		offset: [ 0.125, 0.5, 0.875 ],
+		scale: [ "1 1", "0.95 0.85", "1 1" ],
+	},{
+		duration: duration_unit / 2,
+		iterations: iterations * 2,
+	});
+
+	// Common colors.
+	let style = getComputedStyle(svg);
+	let color_black = style.getPropertyValue("--c-gray-d2");
+	let color_green_1 = style.getPropertyValue("--c-green-d1");
+	let color_green_2 = style.getPropertyValue("--c-green-d2");
+
+	// Pulse top dot.
+	path_dot_t.animate({
+		offset: [ 0, 0.125, 0.875, 1 ],
+		fill: [ color_black, color_green_2, color_green_2, color_black ],
+	},{
+		duration: duration_unit,
+		iterations: iterations,
+	});
+
+	// Pulse bottom dot.
+	let animation = path_dot_b.animate({
+		offset: [ 0, 0.25, 0.75, 1 ],
+		fill: [ color_black, color_green_1, color_green_1, color_black ],
+	},{
+		duration: duration_unit / 2,
+		iterations: iterations * 2,
+	});
+
+	// Repeat after a delay.
+	let delay_units = random_int(2, 9);
+	animation.addEventListener("finish", () => {
+		setTimeout(animate_icon_music, delay_units * duration_unit);
+	});
 }
 
 function animate_icon_resume() {
