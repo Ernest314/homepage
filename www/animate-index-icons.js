@@ -67,7 +67,7 @@ function animate_icon_journal() {
 	}, duration);
 
 	// Repeat after a delay.
-	let delay_units = random_int(2, 7);
+	let delay_units = random_int(2, 9);
 	animation.addEventListener("finish", () => {
 		svg.removeChild(path_ink);
 		setTimeout(animate_icon_journal, delay_units * duration_unit);
@@ -137,7 +137,6 @@ function animate_icon_resume() {
 	let iterations = random_int(2, 4) * 2;
 	// Cycles of 2 allow the animation to look better.
 
-	// Common definitions.
 	let style = getComputedStyle(svg);
 	let color_green_1 = style.getPropertyValue("--c-green-d1");
 	let color_green_2 = style.getPropertyValue("--c-green-d2");
@@ -161,7 +160,7 @@ function animate_icon_resume() {
 	let animation = path_stripe_4.animate(strobe_2, params);
 
 	// Repeat after a delay.
-	let delay_units = random_int(2, 7);
+	let delay_units = random_int(2, 9);
 	animation.addEventListener("finish", () => {
 		setTimeout(animate_icon_resume, delay_units * duration_unit);
 	});
@@ -213,7 +212,7 @@ function animate_icon_admin() {
 	});
 
 	// Repeat after a delay.
-	let delay_units = random_int(2, 7);
+	let delay_units = random_int(2, 9);
 	animation.addEventListener("finish", () => {
 		setTimeout(animate_icon_admin, delay_units * duration_unit);
 	});
@@ -245,7 +244,7 @@ function animate_icon(id) {
 document.addEventListener("DOMContentLoaded", () => {
 	let circles = document.querySelectorAll(".circle > svg");
 	circles.forEach((svg) => {
-		let duration = random_int(1, 5) * 2000;
+		let duration = random_int(2, 9) * 2000;
 		setTimeout(() => { animate_icon(svg.id); }, duration);
 	});
 });
