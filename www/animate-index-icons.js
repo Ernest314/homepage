@@ -146,8 +146,8 @@ function animate_icon_admin() {
 
 	// Color prompt.
 	let duration = iterations * duration_unit;
-	let time_a = 1 / (2 * iterations);
-	let time_b = ((2 * iterations) - 1) / (2 * iterations);
+	let time_a = 1 / (4 * iterations);
+	let time_b = ((4 * iterations) - 1) / (4 * iterations);
 	let style = getComputedStyle(svg);
 	let color_green = style.getPropertyValue("--c-green-d1");
 	let color_white = style.getPropertyValue("--c-gray-l2");
@@ -176,7 +176,7 @@ function animate_icon_erythro() {
 }
 
 function animate_icon_unknown() {
-	
+
 }
 
 function animate_icon(id) {
