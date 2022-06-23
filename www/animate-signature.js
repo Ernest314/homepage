@@ -26,7 +26,7 @@ function animate_signature_en(start_shown = true) {
 	});
 
 	// Define animation. (All timings in msec.)
-	let params = {
+	const params = {
 		duration: 1200,
 		delayEnd: 200,
 		fill: "forwards",
@@ -96,7 +96,7 @@ function animate_signature_zh(start_shown = true) {
 	});
 
 	// Define animation. (All timings in msec.)
-	let params = {
+	const params = {
 		duration: 1800,
 		delayEnd: 200,
 		fill: "forwards",
