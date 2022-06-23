@@ -8,10 +8,6 @@ function animate_signature_en(start_shown = true) {
 	let length = {};
 	let signature = document.getElementById("signature-en");
 	
-	console.info(signature);
-	console.info("start_shown: ", start_shown);
-	console.info("is_animating: ", signature.is_animating);
-	
 	// Don't overwrite animations in progress.
 	if (signature.is_animating) {
 		return;
@@ -77,10 +73,6 @@ function animate_signature_zh(start_shown = true) {
 	};
 	let length = {};
 	let signature = document.getElementById("signature-zh");
-	
-	console.info(signature);
-	console.info("start_shown: ", start_shown);
-	console.info("is_animating: ", signature.is_animating);
 
 	// Don't overwrite animations in progress.
 	if (signature.is_animating) {
