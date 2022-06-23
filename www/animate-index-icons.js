@@ -99,7 +99,39 @@ function animate_icon_sandbox() {
 }
 
 function animate_icon_admin() {
+	let svg = document.getElementById("icon-admin");
+	let path_prompt = document.getElementById("icon-admin-prompt");
+	let path_cursor = document.getElementById("icon-admin-cursor");
 
+	const duration_unit = 2000;
+	let iterations = random_int(2, 7);
+	// Simple animation -- more iterations.
+
+	// Color prompt.
+	let duration = iterations * duration_unit;
+	let time_a = 1 / (2 * iterations);
+	let time_b = ((2 * iterations) - 1) / (2 * iterations);
+	let style = getComputedStyle(svg);
+	let color_green = style.getPropertyValue("--c-green-d1");
+	let color_white = style.getPropertyValue("--c-gray-l2");
+	path_prompt.animate({
+		offset: [ 0, time_a, time_b, 1 ],
+		fill: [ color_white, color_green, color_green, color_white ],
+	}, duration);
+
+	// Flash cursor.
+	let animation = path_cursor.animate({
+		opacity: [ 1, 1, 0, 1, 1 ],
+	},{
+		duration: duration_unit,
+		iterations: iterations,
+	});
+
+	// Repeat after a delay.
+	let delay_units = random_int(2, 7);
+	animation.addEventListener("finish", () => {
+		setTimeout(animate_icon_admin, delay_units * duration_unit);
+	});
 }
 
 function animate_icon_erythro() {
