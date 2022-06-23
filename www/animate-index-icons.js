@@ -179,7 +179,6 @@ function animate_icon_software() {
 	let path_node_main_b = document.getElementById("icon-software-main-center");
 	let path_node_base = document.getElementById("icon-software-base-node");
 	let path_branch = document.getElementById("icon-software-branch");
-	let path_main = document.getElementById("icon-software-main");
 
 	const duration_unit = 2000;
 	let iterations = random_int(2, 5);
@@ -225,7 +224,7 @@ function animate_icon_software() {
 	path_accent.style.strokeWidth = 3.4; // fully cover up stroke
 	path_accent.style.strokeDasharray = s_path;
 	path_accent.style.strokeDashoffset = -s_path;
-	svg.insertBefore(path_accent, path_main);
+	svg.insertBefore(path_accent, path_branch.nextElementSibling);
 	// NB: Remember to remove this node later!
 
 	// Draw along branch.
