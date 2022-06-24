@@ -3,6 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 :root {
+	--c-gray-d2a: #252525dd;
+
 	--c-gray-d2: #252525;
 	--c-gray-d1: #474747;
 	--c-gray-n : #676767;

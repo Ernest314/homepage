@@ -90,11 +90,47 @@ svg #icon-erythro-letter {
 }
 
 
+.circle-flip-box {
+	clip-path: circle(50%);
+	shape-outside: circle();
+	
+	height: 120%;
+	width: 120%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-135%, -10%);
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+
+	text-align: center;
+	color: var(--c-gray-l2);
+	background-color: var(--c-gray-d2a);
+}
+.circle:hover .circle-flip-box {
+	transform: translate(-50%, -50%);
+	transition: transform 0.4s cubic-bezier(0.19, 1.00, 0.22, 1.00);
+	/* CSS bezier easing function generaotr */
+	/* see: https://tools.webdevpuneet.com/css-easing-generator/ */
+}
+.circle .circle-flip {
+	transform: rotate(-30deg);
+}
+.circle:hover .circle-flip {
+	transform: rotate(0deg);
+	transition: transform 0.28s;
+}
 .circle-flip {
-	display: none;
+	padding: 15%;
 }
 .circle-flip > h1 {
 	font-size: 1.2em;
+}
+.circle-flip > h1,
+.circle-flip > p {
+	margin: 0.2em;
 }
 
 
