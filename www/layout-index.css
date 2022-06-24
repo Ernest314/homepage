@@ -118,6 +118,7 @@ svg #icon-erythro-letter {
 	width: 2.4em;
 	height: 2.4em;
 	padding: 0.6em;
+	cursor: pointer;
 }
 .connection > svg {
 	width: 100%;
@@ -162,4 +163,40 @@ footer {
 }
 .footer-box:hover > svg {
 	stroke: var(--c-gray-d2);
+}
+
+
+
+#toast-box {
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%);
+
+	bottom: 0;
+	margin-bottom: 2.8em;
+
+	display: flex;
+	flex-flow: column-reverse;
+}
+.toast {
+	color: var(--c-gray-l2);
+	background-color: var(--c-gray-d2);
+	opacity: 80%;
+	transition: opacity 0.28s;
+
+	padding: 0.5em 1.2em;
+	border-radius: 1.25em;
+	margin: 0.4em;
+}
+.toast.toast-appearing {
+	opacity: 0%;
+}
+.toast.toast-disappearing {
+	opacity: 0%;
+	transition: opacity 1.6s;
+}
+.toast pre {
+	display: inline-block;
+	margin: 0 0.4em;
+	font-family: var(--f-fira-code);
 }

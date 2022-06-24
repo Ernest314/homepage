@@ -151,14 +151,14 @@ function animate_signature_zh(start_shown = true) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-	document.querySelector("#signature-en").is_animating = false;
-	document.querySelector("#signature-zh").is_animating = false;
+	document.getElementById("signature-en").is_animating = false;
+	document.getElementById("signature-zh").is_animating = false;
 
-	document.querySelector("#signature-en")
+	document.getElementById("signature-en")
 		.addEventListener("mouseenter", () => {
 			animate_signature_en(true);
 		});
-	document.querySelector("#signature-zh")
+	document.getElementById("signature-zh")
 		.addEventListener("mouseenter", () => {
 			animate_signature_zh(true);
 		});
