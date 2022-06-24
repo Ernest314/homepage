@@ -84,7 +84,6 @@ svg .stroke-gray   { stroke: var(--c-gray-n ); }
 svg .stroke-white  { stroke: var(--c-gray-l2); }
 svg .stroke-accent { stroke: var(--c-green-n); }
 
-svg #icon-downloads-arrow,
 svg #icon-sandbox-solution,
 svg #icon-unknown-dot {
 	fill: var(--c-green-d1);

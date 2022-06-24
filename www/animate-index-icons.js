@@ -263,7 +263,6 @@ function animate_icon_projects() {
 
 	// Common colors.
 	let style = getComputedStyle(svg);
-	let color_black = style.getPropertyValue("--c-gray-d2");
 	let color_green_1 = style.getPropertyValue("--c-green-d1");
 	let color_green_2 = style.getPropertyValue("--c-green-d2");
 
@@ -308,7 +307,54 @@ function animate_icon_projects() {
 }
 
 function animate_icon_downloads() {
+	let svg = document.getElementById("icon-downloads");
+	let path_triangle = document.getElementById("icon-downloads-triangle");
+	let path_arrow = document.getElementById("icon-downloads-arrow");
 
+	const duration_unit = 2000;
+	let iterations = random_int(2, 5);
+
+	// Pulse triangle.
+	path_triangle.style.transformOrigin = "50% 50%";
+	const scale_a = "scale(1)";
+	const scale_b = "scale(1.14)";
+	path_triangle.animate({
+		// scale: [ "1", "1.14", "1" ],
+		transform: [ scale_a, scale_b, scale_a ],
+	}, {
+		duration: duration_unit / 2,
+		iterations: iterations * 2,
+	});
+
+	// Bounce arrow.
+	svg.style.overflow = "visible";
+	const y_a = "translate(0, 0)";
+	const y_b = "translate(0, 4%)";
+	path_arrow.animate({
+		// translate: [ "0 0", "0 4%", "0 0" ],
+		transform: [ y_a, y_b, y_a ],
+	}, {
+		duration: duration_unit / 2,
+		iterations: iterations * 2,
+	});
+
+	// Highlight arrow.
+	let duration = iterations * duration_unit;
+	let time_a = 1 / (4 * iterations);
+	let time_b = ((4 * iterations) - 1) / (4 * iterations);
+	let style = getComputedStyle(svg);
+	let color_black = style.getPropertyValue("--c-gray-d2");
+	let color_green = style.getPropertyValue("--c-green-d1");
+	let animation = path_arrow.animate({
+		offset: [ 0, time_a, time_b, 1 ],
+		fill: [ color_black, color_green, color_green, color_black ],
+	}, duration);
+
+	// Repeat after a delay.
+	let delay_units = random_int(2, 9);
+	animation.addEventListener("finish", () => {
+		setTimeout(animate_icon_downloads, delay_units * duration_unit);
+	});
 }
 
 function animate_icon_sandbox() {
