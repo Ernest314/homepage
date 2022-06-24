@@ -253,7 +253,58 @@ function animate_icon_software() {
 }
 
 function animate_icon_projects() {
+	let svg = document.getElementById("icon-projects");
+	let path_wire = document.getElementById("icon-projects-wire");
+	let path_light_1 = document.getElementById("icon-projects-light-1");
+	let path_light_2 = document.getElementById("icon-projects-light-2");
 
+	const duration_unit = 2000;
+	let iterations = random_int(2, 5);
+
+	// Common colors.
+	let style = getComputedStyle(svg);
+	let color_black = style.getPropertyValue("--c-gray-d2");
+	let color_green_1 = style.getPropertyValue("--c-green-d1");
+	let color_green_2 = style.getPropertyValue("--c-green-d2");
+
+	// Flash lights.
+	let params = {
+		duration: duration_unit,
+		iterations: iterations,
+	};
+	let strobe_1 = [ color_green_2, color_green_1, color_green_2, color_green_1, color_green_2 ];
+	let strobe_2 = [ color_green_1, color_green_2, color_green_1, color_green_2, color_green_1 ];
+	path_light_1.animate({ fill: strobe_1, easing: "step-start" }, params);
+	path_light_2.animate({ fill: strobe_2, easing: "step-start" }, params);
+
+	// Clone stroke for animation.
+	let path_accent = path_wire.cloneNode();
+	path_accent.id = "icon-projects-accent";
+	let s_path = path_accent.getTotalLength();
+	path_accent.classList.remove("stroke-black");
+	path_accent.style.stroke =
+		getComputedStyle(svg).getPropertyValue("--c-green-d1");
+	path_accent.style.strokeWidth = 1.8; // fully cover up stroke
+	path_accent.style.strokeDasharray = s_path;
+	path_accent.style.strokeDashoffset = -s_path;
+	svg.insertBefore(path_accent, path_wire.nextElementSibling);
+	// NB: Remember to remove this node later!
+
+	// Draw along wire.
+	let duration = iterations * duration_unit;
+	let time_a = 1 / (4 * iterations);
+	let time_b = ((4 * iterations) - 1) / (4 * iterations);
+	let animation = path_accent.animate({
+		offset: [ 0, time_a, time_b, 1 ],
+		strokeDashoffset: [ -s_path, 0, 0, s_path ],
+	}, duration);
+
+	// Repeat after a delay.
+	let delay_units = random_int(2, 9);
+	animation.addEventListener("finish", () => {
+		svg.removeChild(path_accent);
+		setTimeout(animate_icon_projects, delay_units * duration_unit);
+	});
 }
 
 function animate_icon_downloads() {

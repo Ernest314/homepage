@@ -84,14 +84,10 @@ svg .stroke-gray   { stroke: var(--c-gray-n ); }
 svg .stroke-white  { stroke: var(--c-gray-l2); }
 svg .stroke-accent { stroke: var(--c-green-n); }
 
-svg #icon-projects-light-2,
 svg #icon-downloads-arrow,
 svg #icon-sandbox-solution,
 svg #icon-unknown-dot {
 	fill: var(--c-green-d1);
-}
-svg #icon-projects-light-1 {
-	fill: var(--c-green-d2);
 }
 svg #icon-erythro-letter {
 	fill: var(--c-red-erythro);
