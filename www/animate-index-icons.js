@@ -359,6 +359,83 @@ function animate_icon_downloads() {
 }
 
 function animate_icon_sandbox() {
+	let svg = document.getElementById("icon-sandbox");
+	let path_liquid = document.getElementById("icon-sandbox-liquid");
+	let path_bubble_1 = document.getElementById("icon-sandbox-bubble-1");
+	let path_bubble_2 = document.getElementById("icon-sandbox-bubble-2");
+	let path_bubble_3 = document.getElementById("icon-sandbox-bubble-3");
+
+	const duration_unit = 2000;
+	let iterations = random_int(2, 5);
+
+	// Bubble parameters.
+	function offsets_from_ticks(ticks) {
+		const tick_fraction = 1/8;
+		let offsets = [];
+		ticks.forEach((tick) => {
+			offsets.push(tick * tick_fraction);
+		});
+		return offsets;
+	}
+	function get_r_list(circle) {
+		let r = SVGLength_to_percent(circle.r.baseVal);
+		return [ r, r, "0%", "0%", r ];
+	}
+	function get_transforms_list(list) {
+		return [ list[0], list[1], list[1], list[0], list[0] ];
+	}
+	function get_keyframes(offset, transforms, circle) {
+		return {
+			offset: offsets_from_ticks(offset),
+			r: get_r_list(circle),
+			transform: get_transforms_list(transforms),
+		};
+	}
+	let params_bubble = {
+		duration: duration_unit,
+		iterations: iterations,
+	};
+
+	// Bubble up bubbles.
+	path_bubble_1.animate(
+		get_keyframes(
+			[ 0, 4, 4.5, 5, 6 ],
+			[ "translate(0, 0)", "translate(-2%, -15%)" ],
+			path_bubble_1
+		), params_bubble
+	);
+	path_bubble_2.animate(
+		get_keyframes(
+			[ 1, 5, 5.5, 6, 7 ],
+			[ "translate(0, 0)", "translate(6.5%, -26%)" ],
+			path_bubble_2
+		), params_bubble
+	);
+	path_bubble_3.animate(
+		get_keyframes(
+			[ 2, 6, 6.5, 7, 8 ],
+			[ "translate(0, 0)", "translate(-6%, -38%)" ],
+			path_bubble_3
+		), params_bubble
+	);
+
+	// Light up liquid.
+	let duration = iterations * duration_unit;
+	let time_a = 1 / (4 * iterations);
+	let time_b = ((4 * iterations) - 1) / (4 * iterations);
+	let style = getComputedStyle(svg);
+	let color_black = style.getPropertyValue("--c-gray-d2");
+	let color_green = style.getPropertyValue("--c-green-d1");
+	let animation = path_liquid.animate({
+		offset: [ 0, time_a, time_b, 1 ],
+		fill: [ color_black, color_green, color_green, color_black ],
+	}, duration);
+
+	// Repeat after a delay.
+	let delay_units = random_int(2, 9);
+	animation.addEventListener("finish", () => {
+		setTimeout(animate_icon_sandbox, delay_units * duration_unit);
+	});
 
 }
 
