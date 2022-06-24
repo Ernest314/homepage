@@ -109,14 +109,20 @@ svg #icon-erythro-letter {
 	color: var(--c-gray-l2);
 	background-color: var(--c-gray-d2a);
 }
+.circle .circle-flip-box {
+	transition: transform 0.4s cubic-bezier(0.81, 0.00, 0.78, 0.00);
+	/* CSS bezier easing function generator */
+	/* see: https://tools.webdevpuneet.com/css-easing-generator/ */
+}
 .circle:hover .circle-flip-box {
 	transform: translate(-50%, -50%);
 	transition: transform 0.4s cubic-bezier(0.19, 1.00, 0.22, 1.00);
-	/* CSS bezier easing function generaotr */
+	/* CSS bezier easing function generator */
 	/* see: https://tools.webdevpuneet.com/css-easing-generator/ */
 }
 .circle .circle-flip {
 	transform: rotate(-30deg);
+	transition: transform 0.8s ease-in;
 }
 .circle:hover .circle-flip {
 	transform: rotate(0deg);
@@ -124,6 +130,14 @@ svg #icon-erythro-letter {
 }
 .circle-flip {
 	padding: 15%;
+}
+.circle-flip:any-link {
+	text-decoration: none;
+	color: var(--c-gray-l2);
+}
+.circle-flip:any-link:active {
+	color: var(--c-gray-l1);
+	transition: color 0.4s;
 }
 .circle-flip > h1 {
 	font-size: 1.2em;
