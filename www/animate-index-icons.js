@@ -501,7 +501,7 @@ function animate_icon(id) {
 document.addEventListener("DOMContentLoaded", () => {
 	let circles = document.querySelectorAll(".circle > svg");
 	circles.forEach((svg) => {
-		let duration = random_int(2, 9) * 2000;
+		let duration = random_int(4, 7) * 2000;
 		setTimeout(() => { animate_icon(svg.id); }, duration);
 	});
 });
