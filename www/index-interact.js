@@ -7,7 +7,6 @@ function copy_battletag() {
 	navigator.clipboard.writeText(battletag).then(() => {
 		let toast = toast_template.content.firstElementChild.cloneNode();
 		toast.innerHTML = `Copied <pre>${battletag}</pre> to clipboard.`;
-		console.info(toast);
 		toast_box.appendChild(toast);
 		setTimeout(() => {
 			toast.classList.remove("toast-appearing");
