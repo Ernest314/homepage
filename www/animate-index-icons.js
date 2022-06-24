@@ -247,6 +247,7 @@ function animate_icon_software() {
 	animation.addEventListener("finish", () => {
 		svg.removeChild(path_node_a);
 		svg.removeChild(path_node_b);
+		svg.removeChild(path_accent);
 		setTimeout(animate_icon_software, delay_units * duration_unit);
 	});
 }
