@@ -146,8 +146,10 @@ function animate_icon_resume() {
 	let path_stripe_4 = document.getElementById("icon-resume-stripe-4");
 
 	const duration_unit = 2000;
-	let iterations = random_int(2, 4) * 2;
+	let iterations = random_int(2, 5) * 2;
 	// Cycles of 2 allow the animation to look better.
+	// This also means the ratio of time this icon is animated will
+	// be higher, which is good (we want it to be noticed).
 
 	let style = getComputedStyle(svg);
 	let color_green_1 = style.getPropertyValue("--c-green-d1");

@@ -85,10 +85,6 @@ svg .stroke-gray   { stroke: var(--c-gray-n ); }
 svg .stroke-white  { stroke: var(--c-gray-l2); }
 svg .stroke-accent { stroke: var(--c-green-n); }
 
-svg #icon-sandbox-solution,
-svg #icon-unknown-dot {
-	fill: var(--c-green-d1);
-}
 svg #icon-erythro-letter {
 	fill: var(--c-red-erythro);
 }
@@ -173,7 +169,7 @@ footer {
 	transform: translateX(-50%);
 
 	bottom: 0;
-	margin-bottom: 2.8em;
+	margin-bottom: 2.4em;
 
 	display: flex;
 	flex-flow: column-reverse;
