@@ -2,6 +2,9 @@
 	--c-red-erythro: #712219;
 	--s-block: 12em;
 }
+.hidden {
+	display: none;
+}
 
 body {
 	margin: 4em auto;
@@ -35,7 +38,6 @@ main {
 
 .circle {
 	clip-path: circle(50%);
-	display: block;
 	position: absolute;
 	height: 85%; width: 85%;
 	margin: auto;
@@ -68,7 +70,6 @@ main {
 
 .circle > svg {
 	--size-img: 52%;
-	display: block;
 	position: absolute;
 	height: var(--size-img);
 	width: var(--size-img);
@@ -151,9 +152,6 @@ footer {
 	margin: auto;
 	margin-top: 0.8em;
 }
-.footer-box {
-	display: block;
-}
 #signature-en { padding: 1.8em 1.2em 0.0em 0; }
 #signature-zh { padding: 0.0em 0.0em 0.4em 0; }
 #signature-en > svg { height: 4em; }
@@ -164,8 +162,4 @@ footer {
 }
 .footer-box:hover > svg {
 	stroke: var(--c-gray-d2);
-}
-
-.hidden {
-	display: none;
 }
