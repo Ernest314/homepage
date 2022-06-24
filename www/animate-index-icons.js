@@ -6,6 +6,11 @@ function random_int(min, max) {
 	return Math.floor(Math.random() * range + min);
 }
 
+function SVGLength_to_percent(svglength) {
+	svglength.convertToSpecifiedUnits(SVGLength.SVG_LENGTHTYPE_PERCENTAGE);
+	return svglength.valueAsString;
+}
+
 function animate_icon_journal() {
 	let svg = document.getElementById("icon-journal");
 	let path_nib = document.getElementById("icon-journal-nib");
@@ -195,10 +200,6 @@ function animate_icon_software() {
 	// NB: Remember to remove these nodes later!
 
 	// Node travelling animation.
-	function SVGLength_to_percent(svglength) {
-		svglength.convertToSpecifiedUnits(SVGLength.SVG_LENGTHTYPE_PERCENTAGE);
-		return svglength.valueAsString;
-	}
 	let y_a = SVGLength_to_percent(path_node_main_a.cy.baseVal);
 	let y_b = SVGLength_to_percent(path_node_base.cy.baseVal);
 	path_node_a.animate({
