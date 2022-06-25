@@ -1,3 +1,16 @@
+function toggle_signature() {
+	let signature_en = document.getElementById("signature-en");
+	let signature_zh = document.getElementById("signature-zh");
+	signature_en.classList.toggle("hidden");
+	signature_zh.classList.toggle("hidden");
+	if (!signature_en.classList.contains("hidden")) {
+		animate_signature_en(false);
+	}
+	if (!signature_zh.classList.contains("hidden")) {
+		animate_signature_zh(false);
+	}
+}
+
 function animate_signature_en(start_shown = true) {
 	const ids = [ "e", "g", "." ];
 	let path = {
@@ -151,15 +164,19 @@ function animate_signature_zh(start_shown = true) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-	document.getElementById("signature-en").is_animating = false;
-	document.getElementById("signature-zh").is_animating = false;
+	let signature_en = document.getElementById("signature-en");
+	let signature_zh = document.getElementById("signature-zh");
 
-	document.getElementById("signature-en")
-		.addEventListener("mouseenter", () => {
-			animate_signature_en(true);
-		});
-	document.getElementById("signature-zh")
-		.addEventListener("mouseenter", () => {
-			animate_signature_zh(true);
-		});
+	signature_en.is_animating = false;
+	signature_zh.is_animating = false;
+
+	signature_en.addEventListener("mouseenter", () => {
+		animate_signature_en(true);
+	});
+	signature_zh.addEventListener("mouseenter", () => {
+		animate_signature_zh(true);
+	});
+
+	signature_en.addEventListener("click", toggle_signature);
+	signature_zh.addEventListener("click", toggle_signature);
 });
