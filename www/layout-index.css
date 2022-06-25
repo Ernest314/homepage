@@ -223,6 +223,7 @@ footer {
 
 	display: flex;
 	flex-flow: column-reverse;
+	align-items: center;
 }
 .toast {
 	color: var(--c-gray-l2);
@@ -232,7 +233,9 @@ footer {
 
 	padding: 0.5em 1.2em;
 	border-radius: 1.25em;
-	margin: 0.4em;
+	margin: auto;
+	margin-top: 0.4em;
+	margin-bottom: 0.4em;
 }
 .toast.toast-appearing {
 	opacity: 0%;
@@ -244,5 +247,5 @@ footer {
 .toast pre {
 	display: inline-block;
 	margin: 0 0.4em;
-	font-family: var(--f-fira-code);
+	font-family: var(--f-fira);
 }
