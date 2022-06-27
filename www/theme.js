@@ -61,6 +61,12 @@ document.addEventListener("DOMContentLoaded", () => {
 			theme = (theme == "moon") ? "sun" : "moon";
 			localStorage.theme = theme;
 
+			// Prepare list of currently-animating icons.
+			let circles_animating = [];
+			let circles = document.querySelectorAll(".circle > svg");
+			circles.forEach(circle => {
+			});
+
 			// Fade in transition screen.
 			let screen_transition = document.getElementById("screen-transition");
 			screen_transition.style.backgroundColor = document.colors.gray_d;
@@ -72,8 +78,19 @@ document.addEventListener("DOMContentLoaded", () => {
 				setTimeout(() => {
 					screen_transition.classList.remove("screen-appearing");
 
-					// Swap out colors.
+					// Swap out colors + restart animations.
 					swap_colors();
+					circles.forEach(circle => {
+						clearTimeout(circle.animate_timer);
+						if (circle.is_animating) {
+							if (circle.animate_cleanup) {
+								circle.animate_cleanup();
+							}
+							animate_icon(circle);
+						} else {
+							circle.animate_timer = delayed_animate_callback(circle)();
+						}
+					});
 
 					// Swap visibility of theme buttons.
 					toggle_theme_buttons();

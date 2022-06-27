@@ -9,9 +9,14 @@ function SVGLength_to_percent(svglength) {
 	svglength.convertToSpecifiedUnits(SVGLength.SVG_LENGTHTYPE_PERCENTAGE);
 	return svglength.valueAsString;
 }
+function set_element_temporary(element) {
+	element.removeAttribute("id");
+	element.classList.add("animate-temporary");
+}
 
 function animate_icon(svg) {
 	let id = svg.id;
+	svg.is_animating = true;
 	switch (id) {
 		case "icon-journal"  : animate_icon_journal(svg)  ; break;
 		case "icon-music"    : animate_icon_music(svg)    ; break;
@@ -38,10 +43,20 @@ function delayed_animate_callback(svg) {
 		return setTimeout(animate_icon, delay, svg);
 	};
 }
-function repeat_animation(cleanup_elements, svg, animation) {
+function repeat_animation(svg, animation) {
+	let cleanup = () => {
+		svg.is_animating = false;
+		let elements = svg.querySelectorAll(".animate-temporary");
+		elements.forEach(element => { svg.removeChild(element); });
+	};
+	svg.animate_cleanup = cleanup;
 	animation.addEventListener("finish", () => {
-		cleanup_elements.forEach(element => { svg.removeChild(element); });
-		svg.animate_timer = delayed_animate_callback(svg)();
+		// Only clean up if the cleanup wasn't overwritten.
+		// An overwriting cleanup will clean up later.
+		if (svg.animate_cleanup === cleanup) {
+			svg.animate_cleanup();
+			svg.animate_timer = delayed_animate_callback(svg)();
+		}
 	});
 }
 
@@ -76,7 +91,7 @@ function animate_icon_journal(svg) {
 
 	// Clone stroke for animation.
 	let path_ink = path_stroke.cloneNode();
-	path_ink.id = "icon-journal-ink";
+	set_element_temporary(path_ink);
 	let s_path = path_ink.getTotalLength();
 	path_ink.classList.remove("stroke-black");
 	path_ink.style.stroke = c.green;
@@ -84,7 +99,6 @@ function animate_icon_journal(svg) {
 	path_ink.style.strokeDasharray = s_path;
 	path_ink.style.strokeDashoffset = -s_path;
 	svg.appendChild(path_ink);
-	// NB: Remember to remove this node later!
 
 	// Clone wiggle animation.
 	path_ink.animate({
@@ -101,7 +115,7 @@ function animate_icon_journal(svg) {
 	}, duration);
 
 	// Repeat after a delay.
-	repeat_animation([ path_ink ], svg, animation);
+	repeat_animation(svg, animation);
 }
 
 function animate_icon_music(svg) {
@@ -191,11 +205,10 @@ function animate_icon_software(svg) {
 	// Clone nodes for animation.
 	let path_node_a = path_node_main_a.cloneNode();
 	let path_node_b = path_node_main_b.cloneNode();
-	path_node_a.id = "icon-software-travel-node";
-	path_node_b.id = "icon-software-travel-center";
+	set_element_temporary(path_node_a);
+	set_element_temporary(path_node_b);
 	svg.appendChild(path_node_a);
 	svg.appendChild(path_node_b);
-	// NB: Remember to remove these nodes later!
 
 	// Node travelling animation.
 	let y_a = SVGLength_to_percent(path_node_main_a.cy.baseVal);
@@ -207,7 +220,7 @@ function animate_icon_software(svg) {
 
 	// Clone stroke for animation.
 	let path_accent = path_branch.cloneNode();
-	path_accent.id = "icon-software-accent";
+	set_element_temporary(path_accent);
 	let s_path = path_accent.getTotalLength();
 	path_accent.classList.remove("stroke-black");
 	path_accent.style.stroke = c.green;
@@ -215,7 +228,6 @@ function animate_icon_software(svg) {
 	path_accent.style.strokeDasharray = s_path;
 	path_accent.style.strokeDashoffset = -s_path;
 	svg.insertBefore(path_accent, path_branch.nextElementSibling);
-	// NB: Remember to remove this node later!
 
 	// Draw along branch.
 	let duration = iterations * duration_unit;
@@ -233,7 +245,7 @@ function animate_icon_software(svg) {
 	}, duration);
 
 	// Repeat after a delay.
-	repeat_animation([ path_node_a, path_node_b, path_accent ], svg, animation);
+	repeat_animation(svg, animation);
 }
 
 function animate_icon_projects(svg) {
@@ -255,7 +267,7 @@ function animate_icon_projects(svg) {
 
 	// Clone stroke for animation.
 	let path_accent = path_wire.cloneNode();
-	path_accent.id = "icon-projects-accent";
+	set_element_temporary(path_accent);
 	let s_path = path_accent.getTotalLength();
 	path_accent.classList.remove("stroke-black");
 	path_accent.style.stroke = c.green;
@@ -263,7 +275,6 @@ function animate_icon_projects(svg) {
 	path_accent.style.strokeDasharray = s_path;
 	path_accent.style.strokeDashoffset = -s_path;
 	svg.insertBefore(path_accent, path_wire.nextElementSibling);
-	// NB: Remember to remove this node later!
 
 	// Draw along wire.
 	let duration = iterations * duration_unit;
@@ -275,7 +286,7 @@ function animate_icon_projects(svg) {
 	}, duration);
 
 	// Repeat after a delay.
-	repeat_animation([ path_accent ], svg, animation);
+	repeat_animation(svg, animation);
 }
 
 function animate_icon_downloads(svg) {
