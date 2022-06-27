@@ -153,7 +153,7 @@ function animate_icon_music(svg) {
 	},as_animate_params(duration_unit/2, iterations*2));
 
 	// Repeat after a delay.
-	repeat_animation([], svg, animation);
+	repeat_animation(svg, animation);
 }
 
 function animate_icon_resume(svg) {
@@ -186,7 +186,7 @@ function animate_icon_resume(svg) {
 	let animation = path_stripe_4.animate(strobe_2, params);
 
 	// Repeat after a delay.
-	repeat_animation([], svg, animation);
+	repeat_animation(svg, animation);
 }
 
 function animate_icon_software(svg) {
@@ -326,7 +326,7 @@ function animate_icon_downloads(svg) {
 	}, duration);
 
 	// Repeat after a delay.
-	repeat_animation([], svg, animation);
+	repeat_animation(svg, animation);
 }
 
 function animate_icon_sandbox(svg) {
@@ -392,7 +392,7 @@ function animate_icon_sandbox(svg) {
 	}, duration);
 
 	// Repeat after a delay.
-	repeat_animation([], svg, animation);
+	repeat_animation(svg, animation);
 }
 
 function animate_icon_admin(svg) {
@@ -420,7 +420,7 @@ function animate_icon_admin(svg) {
 	}, as_animate_params(duration_unit, iterations));
 
 	// Repeat after a delay.
-	repeat_animation([], svg, animation);
+	repeat_animation(svg, animation);
 }
 
 function animate_icon_erythro(svg) {
