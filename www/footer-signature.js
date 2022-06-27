@@ -29,7 +29,7 @@ function animate_signature_en(start_shown = true) {
 	}
 
 	// Init length data + stroke properties.
-	ids.forEach((id) => {
+	ids.forEach(id => {
 		length[id] = path[id].getTotalLength();
 		path[id].style.strokeDasharray = length[id];
 	});
@@ -61,7 +61,7 @@ function animate_signature_en(start_shown = true) {
 
 	// Trigger animation.
 	let animation_i = null;
-	ids.forEach((id) => {
+	ids.forEach(id => {
 		animation_i = path[id].animate(keyframes[id], params);
 		if (!start_shown) {
 			animation_i.currentTime = 180;
@@ -95,7 +95,7 @@ function animate_signature_zh(start_shown = true) {
 	}
 
 	// Init length data + stroke properties.
-	ids.forEach((id) => {
+	ids.forEach(id => {
 		length[id] = path[id].getTotalLength();
 		path[id].style.strokeDasharray = length[id];
 	});
@@ -152,7 +152,7 @@ function animate_signature_zh(start_shown = true) {
 
 	// Trigger animation.
 	let animation_i = null;
-	ids.forEach((id) => {
+	ids.forEach(id => {
 		animation_i = path[id].animate(keyframes[id], params);
 		if (!start_shown) {
 			animation_i.currentTime = 240;
