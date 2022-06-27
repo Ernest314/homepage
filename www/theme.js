@@ -100,8 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
 					setTimeout(() => {
 						screen_transition.classList.remove("screen-disappearing");
 						screen_transition.classList.add("hidden");
-					}, 200);
-				}, 600);
+					}, 240);
+				}, 580);
 			}, 20);
 		});
 	});
