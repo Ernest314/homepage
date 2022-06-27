@@ -2,26 +2,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
+/* Color pickers: */
+/* LCh <-> RGB color picker: https://css.land/lch/ */
+/* Conversion between all spaces (has inaccuracies): */
+	/* https://davidjohnstone.net/lch-lab-colour-gradient-picker */
+
 :root {
-	--c-gray-d2a: #252525dd;
-
-	--c-gray-d2: #252525;
-	--c-gray-d1: #474747;
-	--c-gray-n : #676767;
-	--c-gray-l1: #989898;
-	--c-gray-l2: #c9c9c9;
-
-	--c-green-d2: #0e3c19;
-	--c-green-d1: #1b722f;
-	--c-green-n : #28a745;
-	--c-green-l1: #6dc381;
-	--c-green-l2: #b2dfbc;
+	--c-gray-d2a: #262626dd;
+	--c-gray-l2a: #d4d4d4dd;
 	
-	--c-blue-d2: #083a42;
-	--c-blue-d1: #106e7d;
-	--c-blue-n : #17a2b8;
-	--c-blue-l1: #86cfda;
-	--c-blue-l2: #abdee5;
+	/* --c-gray-d2: lch(15% 0 180); */
+	/* --c-gray-d1: lch(30% 0 180); */
+	/* --c-gray-n : lch(50% 0 180); */
+	/* --c-gray-l1: lch(70% 0 180); */
+	/* --c-gray-l2: lch(85% 0 180); */
+	--c-gray-d2: #262626;
+	--c-gray-d1: #474747;
+	--c-gray-n : #777777;
+	--c-gray-l1: #ababab;
+	--c-gray-l2: #d4d4d4;
+
+	/* --c-green-d2: lch(20% 45 145); */
+	/* --c-green-d1: lch(30% 45 145); */
+	/* --c-green-n : lch(50% 45 145); */
+	/* --c-green-l1: lch(70% 45 145); */
+	/* --c-green-l2: lch(80% 45 145); */
+	--c-green-d2: #003914;
+	--c-green-d1: #005320;
+	--c-green-n : #3c8649;
+	--c-green-l1: #71bc7b;
+	--c-green-l2: #8cd895;
+	
+	/* --c-pink-d2: lch(20% 45 345); */
+	/* --c-pink-d1: lch(30% 45 345); */
+	/* --c-pink-n : lch(50% 45 345); */
+	/* --c-pink-l1: lch(70% 45 345); */
+	/* --c-pink-l2: lch(80% 45 345); */
+	--c-pink-d2: #610042;
+	--c-pink-d1: #7c215a;
+	--c-pink-n : #b4568c;
+	--c-pink-l1: #ee8bc2;
+	--c-pink-l2: #ffaed9;
 
 	--f-fira: 'Fira Code', monospace;
 	--f-merriweather-sans: 'Merriweather Sans', sans-serif;
