@@ -1,0 +1,35 @@
+body {
+	margin: 4em auto;
+	width: 48em;
+
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: safe space-evenly;
+	align-items: center;
+	align-content: space-around;
+	gap: 1.5em;
+}
+
+svg .fill-black  { fill: var(--c-gray-d2); }
+svg .fill-gray   { fill: var(--c-gray-n ); }
+svg .fill-white  { fill: var(--c-gray-l2); }
+svg .fill-accent { fill: var(--c-green-n); }
+svg .stroke-black  { stroke: var(--c-gray-d2); }
+svg .stroke-gray   { stroke: var(--c-gray-n ); }
+svg .stroke-white  { stroke: var(--c-gray-l2); }
+svg .stroke-accent { stroke: var(--c-green-n); }
+
+body > svg {
+	margin: 1.2em;
+	padding: 0.8em;
+}
+
+#ag {
+	height: 6em;
+	rotate: 8deg;
+}
+
+#xs {
+	height: 8em;
+	rotate: -12deg;
+}

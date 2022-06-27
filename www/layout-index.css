@@ -1,0 +1,296 @@
+:root {
+	--c-red-erythro: #712219;
+	--s-block: 12em;
+}
+.hidden {
+	display: none;
+}
+
+#screen-transition {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	left: 0;
+	top: 0;
+	
+	opacity: 0%;
+	transition: opacity 0.54s;
+}
+#screen-transition.screen-appearing {
+	opacity: 100%;
+	transition: opacity 0.54s ease-in;
+}
+#screen-transition.screen-disappearing {
+	opacity: 0%;
+	transition: opacity 0.22s ease-out;
+}
+
+body {
+	margin: 4em auto;
+	width: 48em;
+}
+
+header {
+	margin-bottom: 0.8em;
+}
+.button-theme {
+	display: inline-block;
+	width: 2em;
+	height: 2em;
+}
+.button-theme > svg {
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+header > nav {
+	display: inline-flex;
+	width: 80%;
+	height: 2em;
+	right: 0;
+	margin: auto;
+	margin-right: 0;
+}
+header > nav > .nav-item {
+	width: 2em;
+	height: 2em;
+}
+
+main {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	align-content: flex-start;
+
+	width: calc(4 * var(--s-block));
+	margin: auto;
+}
+
+.circle-box {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	
+	position: relative;
+	height: var(--s-block);
+	width : var(--s-block);
+}
+/* let a = 2r, where a is --s-block */
+.circle-box:nth-child(7n-6) { margin-left: calc(0.5 * var(--s-block)); } /* r */
+.circle-box:nth-child(n+4) { margin-top: calc(-0.134 * var(--s-block)); } /* (2-sqrt(3))r */
+
+.circle {
+	clip-path: circle(50%);
+	position: absolute;
+	height: 85%; width: 85%;
+	margin: auto;
+	shape-outside: circle();
+}
+/*background arc*/
+.circle::before {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-size: 100%;
+}
+.circle-box:nth-child(3n-2) .circle::before { background-image: url("rc/dark/circle-arc-1.svg"); }
+.circle-box:nth-child(3n-1) .circle::before { background-image: url("rc/dark/circle-arc-3.svg"); }
+.circle-box:nth-child(3n-0) .circle::before { background-image: url("rc/dark/circle-arc-2.svg"); }
+/*background animation*/
+.circle::before {
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+.circle-box:nth-child(2n-1) .circle::before { animation-name: rotate-circle-1; }
+.circle-box:nth-child(2n-0) .circle::before { animation-name: rotate-circle-2; }
+.circle-box:nth-child(3n-2) .circle::before { animation-duration: 24s; }
+.circle-box:nth-child(3n-1) .circle::before { animation-duration: 28s; }
+.circle-box:nth-child(3n-0) .circle::before { animation-duration: 34s; }
+
+@keyframes rotate-circle-1 { from { transform: rotate( 30deg); } to { transform: rotate(390deg); } }
+@keyframes rotate-circle-2 { from { transform: rotate(120deg); } to { transform: rotate(480deg); } }
+
+.circle > svg {
+	--size-img: 52%;
+	position: absolute;
+	height: var(--size-img);
+	width: var(--size-img);
+	margin: calc((100% - var(--size-img)) / 2);
+}
+
+svg .fill-black  { fill: var(--c-gray-d2); }
+svg .fill-gray   { fill: var(--c-gray-n ); }
+svg .fill-white  { fill: var(--c-gray-l2); }
+svg .fill-accent { fill: var(--c-green-n); }
+svg .stroke-black  { stroke: var(--c-gray-d2); }
+svg .stroke-gray   { stroke: var(--c-gray-n ); }
+svg .stroke-white  { stroke: var(--c-gray-l2); }
+svg .stroke-accent { stroke: var(--c-green-n); }
+
+svg #icon-erythro-letter {
+	fill: var(--c-red-erythro);
+}
+
+
+.circle-flip-box {
+	clip-path: circle(50%);
+	shape-outside: circle();
+	
+	height: 120%;
+	width: 120%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-135%, -10%);
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+
+	text-align: center;
+	color: var(--c-gray-l2);
+	background-color: var(--c-gray-d2a);
+}
+.circle .circle-flip-box {
+	transition: transform 0.4s cubic-bezier(0.81, 0.00, 0.78, 0.00);
+	/* CSS bezier easing function generator */
+	/* see: https://tools.webdevpuneet.com/css-easing-generator/ */
+}
+.circle:hover .circle-flip-box {
+	transform: translate(-50%, -50%);
+	transition: transform 0.4s cubic-bezier(0.19, 1.00, 0.22, 1.00);
+	/* CSS bezier easing function generator */
+	/* see: https://tools.webdevpuneet.com/css-easing-generator/ */
+}
+.circle .circle-flip {
+	transform: rotate(-30deg);
+	transition: transform 0.8s ease-in;
+}
+.circle:hover .circle-flip {
+	transform: rotate(0deg);
+	transition: transform 0.28s;
+}
+.circle-flip {
+	padding: 15%;
+}
+.circle-flip:any-link {
+	text-decoration: none;
+	color: var(--c-gray-l2);
+}
+.circle-flip:any-link:active {
+	color: var(--c-gray-l1);
+	transition: color 0.4s;
+}
+.circle-flip > h1 {
+	font-size: 1.2em;
+}
+.circle-flip > h1,
+.circle-flip > p {
+	margin: 0.2em;
+}
+
+
+.connections-box {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	gap: 1.4em;
+
+	width: 30em;
+	margin: auto;
+	margin-top: 3.6em;
+}
+.connection {
+	width: 2.4em;
+	height: 2.4em;
+	padding: 0.6em;
+	cursor: pointer;
+}
+.connection > svg {
+	width: 100%;
+	height: 100%;
+}
+/* hover effects */
+.connection:hover > svg .fill-gray {
+	fill: var(--c-gray-d2);
+	transition: fill 0.28s;
+}
+.connection > svg .fill-gray {
+	transition: fill 0.28s;
+}
+.connection:hover > svg {
+	transform: scale(140%);
+	transition: transform 0.12s;
+}
+.connection > svg {
+	transform: scale(100%);
+	transition: transform 0.12s;
+}
+
+
+footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	align-content: center;
+
+	width: calc(4 * var(--s-block));
+	margin: auto;
+	margin-top: 0.8em;
+}
+#signature-en { padding: 1.8em 1.2em 0.0em 0; }
+#signature-zh { padding: 0.0em 0.0em 0.4em 0; }
+#signature-en > svg { height: 4em; }
+#signature-zh > svg { height: 6em; }
+.footer-box > svg {
+	stroke: var(--c-gray-n);
+	transition: stroke 0.28s;
+}
+.footer-box:hover > svg {
+	stroke: var(--c-gray-d2);
+}
+
+
+
+#toast-box {
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%);
+
+	bottom: 0;
+	margin-bottom: 2.4em;
+
+	display: flex;
+	flex-flow: column-reverse;
+	align-items: center;
+}
+.toast {
+	color: var(--c-gray-l2);
+	background-color: var(--c-gray-d2);
+	opacity: 80%;
+	transition: opacity 0.28s;
+
+	padding: 0.5em 1.2em;
+	border-radius: 1.25em;
+	margin: auto;
+	margin-top: 0.4em;
+	margin-bottom: 0.4em;
+}
+.toast.toast-appearing {
+	opacity: 0%;
+}
+.toast.toast-disappearing {
+	opacity: 0%;
+	transition: opacity 1.6s;
+}
+.toast pre {
+	display: inline-block;
+	margin: 0 0.4em;
+	font-family: var(--f-fira);
+}
