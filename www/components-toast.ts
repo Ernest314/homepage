@@ -9,15 +9,13 @@ export async function create_toast(html: string, timeout: number) {
 		!(toast_box instanceof HTMLDivElement) ||
 		!(toast_template instanceof HTMLTemplateElement)
 	) {
-		console.error("Could not initialize toast templates.");
-		return;
+		throw new Error("Could not initialize toast templates.");
 	}
 	
 	// Attempt to clone a new toast instance.
 	const toast = toast_template.content.firstElementChild?.cloneNode(true);
 	if (toast === undefined || !(toast instanceof HTMLDivElement)) {
-		console.error("Could not create new toast.");
-		return;
+		throw new Error("Could not create new toast.");
 	}
 	toast.innerHTML = html;
 

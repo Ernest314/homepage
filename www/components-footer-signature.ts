@@ -1,4 +1,4 @@
-interface IsAnimatingElement extends HTMLDivElement { is_animating: boolean; }
+export interface IsAnimatingElement extends HTMLDivElement { is_animating: boolean; }
 // Declaring these for use in the rest of the file for brevity.
 const sig_en = <IsAnimatingElement>document.getElementById("signature-en");
 const sig_zh = <IsAnimatingElement>document.getElementById("signature-zh");
@@ -23,7 +23,7 @@ function get_svgpath_by_id(id: string): SVGPathElement {
 // When `start_shown` is false, the animation will start at the point
 // where the existing signature has faded out completely (the writing
 // will play starting on a blank screen).
-function animate_signature_en(start_shown = true) {
+export function animate_signature_en(start_shown = true) {
 	const signature = sig_en;
 	const ids = [ "e", "g", "." ];
 	const path: { [key: string]: SVGPathElement } = {
@@ -90,7 +90,7 @@ function animate_signature_en(start_shown = true) {
 // When `start_shown` is false, the animation will start at the point
 // where the existing signature has faded out completely (the writing
 // will play starting on a blank screen).
-function animate_signature_zh(start_shown = true) {
+export function animate_signature_zh(start_shown = true) {
 	const signature = sig_zh;
 	const ids = [ "x1", "x2", "x3", "x4", "z1", "z2", "z3", "z4" ];
 	const path: { [key: string]: SVGPathElement } = {

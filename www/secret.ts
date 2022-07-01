@@ -4,12 +4,12 @@ import { create_toast } from "./components-toast.js";
 declare global { interface Document {
 	secrets: { [key: string]: Secret };
 } }
-interface Secret {
+export interface Secret {
 	key: string;
 	attempt: KeyboardEvent[];
 }
 
-function register_secret(key: string, response: string) {
+export function register_secret(key: string, response: string) {
 	// Initialize the reference target (goal) value, and an array to
 	// hold the current matching attempts.
 	document.secrets[key] = {
@@ -23,8 +23,8 @@ function register_secret(key: string, response: string) {
 		// Push the event to the attempt array, to be checked against.
 		document.secrets[key].attempt.push(event);
 
-		let i = document.secrets[key].attempt.length - 1;
-		let key_i = document.secrets[key].key[i];
+		const i = document.secrets[key].attempt.length - 1;
+		const key_i = document.secrets[key].key[i];
 
 		// If the entire string matches the attempt array, create a
 		// toast (and reset the attempt array).
