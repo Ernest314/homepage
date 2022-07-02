@@ -70,5 +70,7 @@ function register_all_secrets() {
 }
 
 // Make sure the secrets property is initialized.
-document.secrets = document.secrets || [];
-register_all_secrets();
+document.addEventListener("DOMContentLoaded", () => {
+	document.secrets = document.secrets || [];
+	register_all_secrets();
+});

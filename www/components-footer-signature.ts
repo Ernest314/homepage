@@ -1,7 +1,7 @@
 export interface IsAnimatingElement extends HTMLDivElement { is_animating: boolean; }
 // Declaring these for use in the rest of the file for brevity.
-const sig_en = <IsAnimatingElement>document.getElementById("signature-en");
-const sig_zh = <IsAnimatingElement>document.getElementById("signature-zh");
+const sig_en = document.getElementById("signature-en") as IsAnimatingElement;
+const sig_zh = document.getElementById("signature-zh") as IsAnimatingElement;
 
 // Swap the visible signature and start animating the shown one.
 export function toggle_signature() {

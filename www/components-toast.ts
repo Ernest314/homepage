@@ -1,20 +1,17 @@
 import { delay } from "./util.js";
 
 export async function create_toast(html: string, timeout: number) {
-	const toast_box = document.getElementById("toast-box");
-	const toast_template = document.getElementById("toast-template");
+	const toast_box = document.getElementById("toast-box") as HTMLDivElement;
+	const toast_template = document.getElementById("toast-template") as HTMLTemplateElement;
 
 	// Check that element fetching was successful.
-	if (toast_box === null || toast_template === null ||
-		!(toast_box instanceof HTMLDivElement) ||
-		!(toast_template instanceof HTMLTemplateElement)
-	) {
+	if (toast_box === null || toast_template === null) {
 		throw new Error("Could not initialize toast templates.");
 	}
 	
 	// Attempt to clone a new toast instance.
-	const toast = toast_template.content.firstElementChild?.cloneNode(true);
-	if (toast === undefined || !(toast instanceof HTMLDivElement)) {
+	const toast = toast_template.content.firstElementChild?.cloneNode(true) as HTMLDivElement;
+	if (toast === undefined) {
 		throw new Error("Could not create new toast.");
 	}
 	toast.innerHTML = html;
