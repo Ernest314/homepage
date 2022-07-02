@@ -1,2 +1,9 @@
-# Assets
-www/**/rc/**
+# Typescript generated files
+*.js
+*.js.map
+
+# Assets (exported)
+www/**/rc/*.png
+
+# Google Search Console verification
+www/google*.html

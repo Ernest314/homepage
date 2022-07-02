@@ -1,25 +1,37 @@
-function toggle_signature() {
-	let signature_en = document.getElementById("signature-en");
-	let signature_zh = document.getElementById("signature-zh");
-	signature_en.classList.toggle("hidden");
-	signature_zh.classList.toggle("hidden");
-	if (!signature_en.classList.contains("hidden")) {
-		animate_signature_en(false);
-	}
-	if (!signature_zh.classList.contains("hidden")) {
-		animate_signature_zh(false);
+export interface IsAnimatingElement extends HTMLDivElement { is_animating: boolean; }
+// Declaring these for use in the rest of the file for brevity.
+const sig_en = document.getElementById("signature-en") as IsAnimatingElement;
+const sig_zh = document.getElementById("signature-zh") as IsAnimatingElement;
+
+// Swap the visible signature and start animating the shown one.
+export function toggle_signature() {
+	sig_en.classList.toggle("hidden");
+	sig_zh.classList.toggle("hidden");
+	if (!sig_en.classList.contains("hidden")) { animate_signature_en(false); }
+	if (!sig_zh.classList.contains("hidden")) { animate_signature_zh(false); }
+}
+
+function get_svgpath_by_id(id: string): SVGPathElement {
+	const element = document.getElementById(id);
+	if (element instanceof SVGPathElement) {
+		return element;
+	} else {
+		throw new Error(`#{id} is not an SVG path element.`);
 	}
 }
 
-function animate_signature_en(start_shown = true) {
+// When `start_shown` is false, the animation will start at the point
+// where the existing signature has faded out completely (the writing
+// will play starting on a blank screen).
+export function animate_signature_en(start_shown = true) {
+	const signature = sig_en;
 	const ids = [ "e", "g", "." ];
-	let path = {
-		"e": document.getElementById("signature-e"),
-		"g": document.getElementById("signature-g"),
-		".": document.getElementById("signature-dot"),
+	const path: { [key: string]: SVGPathElement } = {
+		"e": get_svgpath_by_id("signature-e"),
+		"g": get_svgpath_by_id("signature-g"),
+		".": get_svgpath_by_id("signature-dot"),
 	};
-	let length = {};
-	let signature = document.getElementById("signature-en");
+	let length: { [key: string]: number } = {};
 	
 	// Don't overwrite animations in progress.
 	if (signature.is_animating) {
@@ -29,19 +41,19 @@ function animate_signature_en(start_shown = true) {
 	}
 
 	// Init length data + stroke properties.
-	ids.forEach(id => {
+	for (const id of ids) {
 		length[id] = path[id].getTotalLength();
-		path[id].style.strokeDasharray = length[id];
-	});
+		path[id].style.strokeDasharray = length[id].toString();
+	}
 
 	// Define animation. (All timings in msec.)
-	const params = {
+	const params: KeyframeAnimationOptions = {
 		duration: 1200,
-		delayEnd: 200,
+		endDelay: 200,
 		fill: "forwards",
 	};
-	function s(id) { return length[id]; }
-	let keyframes = {
+	function s(id: string) { return length[id]; }
+	const keyframes: { [key: string]: PropertyIndexedKeyframes } = {
 		"e": {
 			offset          : [ 0.0000, 0.1000, 0.1500, 0.2000, 0.2500, 0.5500 ],
 			opacity         : [      1,      0,      0,      1,      1,      1 ],
@@ -61,31 +73,37 @@ function animate_signature_en(start_shown = true) {
 
 	// Trigger animation.
 	let animation_i = null;
-	ids.forEach(id => {
+	for (const id of ids) {
 		animation_i = path[id].animate(keyframes[id], params);
-		if (!start_shown) {
-			animation_i.currentTime = 180;
-		}
-	});
-	animation_i.addEventListener("finish", () => {
-		signature.is_animating = false;
-	});
+		if (!start_shown) { animation_i.currentTime = 180; }
+	}
+
+	// Cleanup after animation.
+	if (animation_i === null) {
+		throw new Error("Cannot unset `is_animating` flag.");
+	}
+	animation_i.addEventListener("finish", () =>
+		signature.is_animating = false
+	);
 }
 
-function animate_signature_zh(start_shown = true) {
+// When `start_shown` is false, the animation will start at the point
+// where the existing signature has faded out completely (the writing
+// will play starting on a blank screen).
+export function animate_signature_zh(start_shown = true) {
+	const signature = sig_zh;
 	const ids = [ "x1", "x2", "x3", "x4", "z1", "z2", "z3", "z4" ];
-	let path = {
-		"x1": document.getElementById("signature-x-1"),
-		"x2": document.getElementById("signature-x-2"),
-		"x3": document.getElementById("signature-x-3"),
-		"x4": document.getElementById("signature-x-4"),
-		"z1": document.getElementById("signature-z-1"),
-		"z2": document.getElementById("signature-z-2"),
-		"z3": document.getElementById("signature-z-3"),
-		"z4": document.getElementById("signature-z-4"),
+	const path: { [key: string]: SVGPathElement } = {
+		"x1": get_svgpath_by_id("signature-x-1"),
+		"x2": get_svgpath_by_id("signature-x-2"),
+		"x3": get_svgpath_by_id("signature-x-3"),
+		"x4": get_svgpath_by_id("signature-x-4"),
+		"z1": get_svgpath_by_id("signature-z-1"),
+		"z2": get_svgpath_by_id("signature-z-2"),
+		"z3": get_svgpath_by_id("signature-z-3"),
+		"z4": get_svgpath_by_id("signature-z-4"),
 	};
-	let length = {};
-	let signature = document.getElementById("signature-zh");
+	let length: { [key: string]: number } = {};
 
 	// Don't overwrite animations in progress.
 	if (signature.is_animating) {
@@ -95,19 +113,19 @@ function animate_signature_zh(start_shown = true) {
 	}
 
 	// Init length data + stroke properties.
-	ids.forEach(id => {
+	for (const id of ids) {
 		length[id] = path[id].getTotalLength();
-		path[id].style.strokeDasharray = length[id];
-	});
+		path[id].style.strokeDasharray = length[id].toString();
+	}
 
 	// Define animation. (All timings in msec.)
-	const params = {
+	const params: KeyframeAnimationOptions = {
 		duration: 1800,
-		delayEnd: 200,
+		endDelay: 200,
 		fill: "forwards",
 	};
-	function s(id) { return length[id]; }
-	let keyframes = {
+	function s(id: string) { return length[id]; }
+	const keyframes: { [key: string]: PropertyIndexedKeyframes } = {
 		"x1": {
 			offset          : [  0.0000,  0.0677,  0.1000,  0.1333,  0.1600,  0.3400 ],
 			opacity         : [       1,       0,       0,       1,       1,       1 ],
@@ -152,31 +170,27 @@ function animate_signature_zh(start_shown = true) {
 
 	// Trigger animation.
 	let animation_i = null;
-	ids.forEach(id => {
+	for (const id of ids) {
 		animation_i = path[id].animate(keyframes[id], params);
-		if (!start_shown) {
-			animation_i.currentTime = 240;
-		}
-	});
-	animation_i.addEventListener("finish", () => {
-		signature.is_animating = false;
-	});
+		if (!start_shown) { animation_i.currentTime = 240; }
+	}
+
+	// Cleanup after animation.
+	if (animation_i === null) {
+		throw new Error("Cannot unset `is_animating` flag.");
+	}
+	animation_i.addEventListener("finish", () =>
+		signature.is_animating = false
+	);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-	let signature_en = document.getElementById("signature-en");
-	let signature_zh = document.getElementById("signature-zh");
+	sig_en.is_animating = false;
+	sig_zh.is_animating = false;
 
-	signature_en.is_animating = false;
-	signature_zh.is_animating = false;
+	sig_en.addEventListener("mouseenter", () => animate_signature_en(true));
+	sig_zh.addEventListener("mouseenter", () => animate_signature_zh(true));
 
-	signature_en.addEventListener("mouseenter", () => {
-		animate_signature_en(true);
-	});
-	signature_zh.addEventListener("mouseenter", () => {
-		animate_signature_zh(true);
-	});
-
-	signature_en.addEventListener("click", toggle_signature);
-	signature_zh.addEventListener("click", toggle_signature);
+	sig_en.addEventListener("click", toggle_signature);
+	sig_zh.addEventListener("click", toggle_signature);
 });

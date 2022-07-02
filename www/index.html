@@ -7,16 +7,16 @@
     <link rel="icon" href="rc/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style-basic.css">
     <link rel="stylesheet" href="layout-index.css">
-    <script src="theme.js"></script>
-    <script src="animate-index-icons.js"></script>
-    <script src="index-interact.js"></script>
-    <script src="secret.js"></script>
+    <script src="index-animate.js" type="module"></script>
+    <script src="index-interact.js" type="module"></script>
+    <script src="secret.js" type="module"></script>
     <meta name="google-site-verification" content="-JSBdDgXcvLDP7FhVS-smJR5mBt79asYYURthJyWS6w"/>
   </head>
 
   <body>
     <header>
       <div class="button-theme">
+        <script src="theme.js" type="module"></script>
         <svg viewBox="0 0 26.458333 26.458333">
           <path id="button-theme-sun" class="fill-black"
           d="M 13.229167,1.0407633 C 12.895752,1.0407632 12.562158,1.1554517 12.292273,1.3854451 L 9.3591186,3.8855509 5.5169757,4.1919921 C 4.8100419,4.2484061 4.2484079,4.8100413 4.1919921,5.5169757 L 3.8855509,9.3591186 1.3854451,12.292273 C 0.92545783,12.832042 0.92545783,13.626291 1.3854451,14.16606 L 3.8855509,17.099214 C 3.8855509,17.099214 4.0897936,19.660672 4.1919921,20.941357 4.2484039,21.648292 4.8100419,22.209927 5.5169757,22.266341 L 9.3591186,22.572782 12.292273,25.072888 C 12.832043,25.532874 13.62629,25.532874 14.16606,25.072888 L 17.099214,22.572782 20.941357,22.266341 C 21.648291,22.209927 22.209929,21.648292 22.266341,20.941357 22.368539,19.660672 22.572782,17.099214 22.572782,17.099214 L 25.072888,14.16606 C 25.532875,13.626291 25.532875,12.832042 25.072888,12.292273 L 22.572782,9.3591186 C 22.572782,9.3591186 22.368539,6.7976612 22.266341,5.5169757 22.209929,4.8100413 21.648291,4.2484058 20.941357,4.1919921 L 17.099214,3.8855509 14.16606,1.3854451 C 13.896177,1.1554517 13.562581,1.0407634 13.229167,1.0407633 Z M 13.229167,5.4715007 C 17.513635,5.4715007 20.986833,8.9446979 20.986833,13.229167 20.986833,17.513635 17.513635,20.986833 13.229167,20.986833 8.9446979,20.986833 5.4715007,17.513635 5.4715007,13.229167 5.4715007,8.9446979 8.9446979,5.4715007 13.229167,5.4715007 Z"
@@ -30,7 +30,6 @@
       </div>
       <nav>
         <div class="nav-item">
-
         </div>
       </nav>
     </header>
@@ -304,7 +303,7 @@
     <div class="starfield"></div>
 
     <footer>
-      <script src="footer-signature.js"></script>
+      <script src="components-footer-signature.js" type="module"></script>
       <div id="signature-en" class="footer-box">
         <svg viewBox="0 0 26.458333 18.520833">
           <path id="signature-e"
